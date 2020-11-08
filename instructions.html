@@ -3,10 +3,46 @@
 
 без webpack===============
 в терминале --- vue create название --- эта команда создаст экземпляр vue
-npm i --- загрузит node_modules
-npm run serve --- откроет  localhost 8080
+npm i 
+--- загрузит node_modules
+npm run serve 
+--- откроет  localhost 8080
 
 с webpack==========================
 vue init webpack название проекта
 npm i --- загрузит node_modules
 npm run dev	 
+
+
+<!-- -----выведет поле текст и поле id  из data------------ -->
+<template>
+  <div>
+    {{text + id}} 
+  </div>
+</template>
+<script>
+  export default {
+    name: 'Mycomponent',
+    data() {
+      return {
+        text: "Hello!!!",// это свойство. с ними можно производить мат операции и присваивать  новые значения
+        id: 10
+
+      }
+    }
+  }
+</script>
+
+
+<!-- выведет данные из поля data из переменной email -->
+:value="email"  --короткая запись
+v-bind:value="email" 
+export default {
+name: 'Mycomponent',
+data(){
+return{
+text:"Hello!!!",
+email:"yushinbox@gmail.com",
+password:"123456i"
+}
+}
