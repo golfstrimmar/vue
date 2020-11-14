@@ -1,0 +1,8 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/golfstrimmar/vue.git",
+  "author": "yushinbox@gmail.com <yushinbox@gmail.com>",
+  "license": "MIT"
+}

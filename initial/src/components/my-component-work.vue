@@ -116,76 +116,7 @@ isActive
 
 
 
-<!-- ===================================================== -->
-<!-- -----------methods-------------------- -->
-
-<!-- click -->
-<div >
-  <button 
-  class="btn btn-dark"
-  @click="counter1 += 1"
-  >button</button>
-  <p>Кнопка выше была нажата {{ counter1 }} раз</p>
-</div>
-<hr>
-<!-- ---------поменяет по клику на кнопку значение свойства id у второго элемента массива users---------------------- -->
-<div >
-  <button 
-  class="btn btn-warning"
-  @click="users[1].id=20"
-  >поменяет по клику на кнопку значение свойства id у второго элемента массива users</button>
-</div>
-<hr>
-<!-- ------------------------------- -->
-<div >
-  <button 
-  class="btn btn-primary"
-  @click="nameFunction()"
-  >По клику вызовет функцию</button>
-
-</div>
-<hr>
-<!-- ------------------------------- -->
-<button
-@click="high"
-class="btn btn-secondary"
->
-Counter равен: {{counter}}
-</button>
-<hr>
-<!-- ------------------------------- -->
-  <div class="container">
-    <h4>App</h4>
-    <h2>{{count}}</h2>
-  <div class="row justify-content-around"> 
-    <button 
-    class="btn btn-success"
-    @click="countUp"
-    >
-      +1
-    </button>
-
-    <button 
-    class=" btn btn-success"
-    @click="countDown"
-    >
-      -1 
-    </button>
-  </div>	
-</div>
-<hr>
-<!-- ----------очищает url от https://--------------------- -->
-<div class="container">
-  <h1>Url: <a :href="url">{{cleanUrl}} </a></h1>
-  <input type="text" class="form-control" v-model="url">
-  <button @click="cleanerUrl" class="btn btn-primary">Clean Url</button>
-</div>
-<hr>
-<!-- ------------------------------- -->
-<hr>
-<!-- ------------------------------- -->
-<hr>
-<!-- ------------------------------- -->
+	
 <hr>
 <!-- ------------------------------- -->
 <hr>
@@ -204,6 +135,13 @@ export default {
 name: 'Mycomponent',
 data(){
   return{
+    sizeToggle:false,
+    isRounded:false,
+    disabled:false,
+    fontColor:'#ccc',
+    backgroundColor:"yellow",
+  message: "Hello, world!!!", 
+  msg:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, fugit!	", 
   text:"Lorem ipsum dolor sit amet consectetur, <strong> elit. Asperiores nobis quo mollitia.</strong> Est ipsa totam natus deserunt adipisci. Doloremque <i>deleniti iste corrupti </i> praesentium error at officiis, eos iure voluptatem numquam!",
    id: 10,
    title: "заголовок",
@@ -220,46 +158,21 @@ data(){
       {id:1, name: "Иван" },
       {id:2, name: "Марья" }
     ],   
-    counter1: 0,
-    counter: 1,
-    hashtags:[],
+	    hashtags:[],
     mes:"",
     checked: true,
     count: "0",
     url: "",
     cleanUrl: ""
 }
+		
 
-},
-methods:{
-nameFunction(){alert('nameFunction')},
-	high(){
-  this.counter++;
-
-},
-countUp(){
-  this.count +=1;
-},
-countDown(){
-  this.count -=1;
-},
-cleanerUrl(){
-  this.cleanUrl = this.url.replace(/^https?:\/\//, '').replace(/\/$/,'')
 }
-
-	},
-// хук жизненного цикла
-created: function(){
-  // this.counter = 3;
-  this.high();
-},
-
-
 }
 
 </script>
 
-<style >
+<style scoped>
   .active{
     background: deepskyblue;
 color: darksalmon;
@@ -275,5 +188,8 @@ color: darksalmon;
 
   .btn{
     margin-top: 20px;
+  }
+  .large{
+    font-size: 30px;
   }
 </style>
