@@ -34,7 +34,7 @@ Add number
 >
 Add number 
 </button>
-<h3>Your count: {{sum()}}</h3>
+<h3>Your count: {{sum}}</h3>
 <ul>
   <li 
   v-for="number in numbers"
@@ -50,7 +50,7 @@ Add number
 <button class="btn btn-success"
 @click="showh2=!showh2"
 >
-  Toggle header
+ {{btnTexts}}
 </button>
 
 <h2 v-show="showh2">
@@ -115,7 +115,7 @@ Counter равен: {{counter}}
 
 <hr>
 <!-- ------------------------------- -->
-<h1 >{{title}}</h1>
+<h5>{{title}}</h5>
 <button class="btn btn-primary" 
 :class="[sizeToggle ? 'large' : '',{'rounded': isRounded}]"
 :style="styles"
@@ -157,19 +157,13 @@ showh2: true,
     count: "0",
     url: "",
     cleanUrl: "",
-numbers	: [1,2,3]	
-
+numbers	: [1,2,3],	
+title: "Изменение свойств по чекбоксу"		 
 
 }
 	},
 methods:{
-sum(){
-  let sum =0;
-  for(let i=0; i< this.numbers.length; i++){
-    sum += this.numbers[i];
-  }
-  return sum;
-},
+
 addnumbers(){
   let rnd = Math.floor(Math.random() * 11) -5;
 this.numbers.push(rnd)
@@ -201,7 +195,17 @@ computed: {
     color: this.fontColor,
     background: this.backgroundColor
     }
+  },
+  sum(){
+  let sum =0;
+  for(let i=0; i< this.numbers.length; i++){
+    sum += this.numbers[i];
   }
+  return sum;
+},
+btnTexts(){
+  return  this.showh2 ? 'Hide result' : 'Show result';
+}		
 }
 	
 }
