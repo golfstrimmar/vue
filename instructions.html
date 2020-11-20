@@ -139,3 +139,12 @@ item.id		одно из свойств заданных в поле data
 
   ===========================  сработает по отпусканию кнопки enter
   @keyup.enter="inputHandler()		
+
+============== добавляет элемент item в массив list
+  this.list.push(item)
+====================== добавляет элемент item в начало массив list
+  this.list.unshift(item)
+
+
+  =========== связывает двухсторонней связью состояние чекбокса checked  и атрибут переменной item.selected
+  v-model="item.selected"

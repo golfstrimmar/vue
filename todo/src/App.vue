@@ -1,3 +1,4 @@
+// 55.27 на ролике
 <template>
   <div id="app">
     <!-- {{list[0].content}}  -->
@@ -16,7 +17,7 @@
 				<div class="input-group" id='actionPanel1'>
 					<div class="input-group-prepend mr-2">
 						<span id="selectAllAction">
-							<button class="btn btn-outline-primary" type="button">Select all</button>
+							<button class="btn btn-outline-primary" type="button" @click="selectAll()">Select all</button>
 						</span>
 					</div>
 					<input type="text" class="form-control" id='input' v-model="input" @keyup.enter="inputHandler()">
@@ -32,12 +33,12 @@
 			<ul class="list-group list-group-flush" id='list'>
         <li class="list-group-item" v-for="item in list" :key="item.id">
           <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" :id="item.id">
-            <label :for="item.id" class="form-check-label">
+            <input type="checkbox" class="form-check-input" :id="item.id" v-model="item.selected">
+            <label :for="item.id" class="form-check-label" :class="{todoDone: item.done, test: !item.done }"		>
               <h5>{{ item.content }}</h5>
               </label>
-            <button class="btn btn-outline-danger " style="float: right">restore</button>
-            <button class="btn btn-outline-success mr-2" style="float: right">done</button> 
+            <button class="btn btn-outline-danger " style="float: right" v-if="item.selected" @click="restore(item)">restore</button>
+            <button class="btn btn-outline-success mr-2" style="float: right" v-if="item.selected" @click="done(item)">done</button> 
           </div>
         </li>
       </ul>
@@ -59,11 +60,15 @@ export default {
     
     const item1 = {
       id: 1,
-      content: "Купить хлеба"
+      content: "Купить хлеба",
+  selected: false,
+  done: false
     }
     const item2 = {
       id: 2,
-      content: "Купить пива"
+      content: "Купить пива",
+      selected: false,
+  done: false		
     }
     data.input = "iii"  
    data.list.push(item1)
@@ -72,8 +77,32 @@ export default {
   },
   methods:{
     inputHandler(){
-      console.log(this.input)
-    }
+      const input = this.input.trim()
+      if(!input){
+        return
+      }
+      const item = {
+       id: this.list.length + 1,
+        content: input,
+        selected: false,
+  done: false		
+        }
+this.list.unshift(item)
+this.input=""
+    },
+selectAll(){
+  for(const item of this.list){
+    item.selected = true
+  }
+},
+restore(item){
+console.log(item)
+},
+done(item){
+item.done = true
+}
+
+
   }
 };
 </script>
