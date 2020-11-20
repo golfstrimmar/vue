@@ -2,22 +2,35 @@
   <div>
     <nav>
       <transition name="fade" mode="out-in">
-      <i class="material-icons menu" v-if="!show" @click="show = !show" key="menu" >Menu</i> 
-      <i class="material-icons clear" v-else @click="show = !show" key="clear"	>Clear</i>  
+      <i class="material-icons menu" v-if="!show" @click="show = !show" key="menu" >menu</i>  
+      <i class="material-icons clear" v-else @click="show = !show" key="clear"	>clear</i>  
       </transition>
-      <transition name="fade" >
-     <ul v-if="show">
+      <transition name="fade1" >
+      <ul v-if="show"> 
        <li v-for="item in items"  :key="item">
 {{item}}
        </li>
-     </ul>
+     </ul> 
       </transition>
     </nav>
   </div>
 </template>
 
 <style >
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.material-icons {
+    font-size: 24px;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+  opacity: 0;
+}	
+
+
+
   /* @font-face {
   font-family: 'Material Icons';
   font-style: normal;
@@ -41,13 +54,16 @@
   -webkit-font-smoothing: antialiased;
 }		 */
 body{
-  display:flex;
+  /* display:flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; */
 }
+*{
+  box-sizing: border-box;
+}		
 nav{
-  
+  background:rgba(255,188,140, .6);
 }
 </style>
 
@@ -55,6 +71,7 @@ nav{
 export default {
   data(){
     return{
+    show: false,
       items:[
         'Home',
         'About',
@@ -62,8 +79,7 @@ export default {
         'Works',
         'Contacts',
       ]
-    }
-  },
-  show: false,
+  }
+}
 }
 </script>

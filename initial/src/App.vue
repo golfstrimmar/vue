@@ -7,17 +7,17 @@
     <!-- <methods></methods> -->
       <!-- <demo></demo> -->
       <!-- <taskList></taskList> -->
-      <!-- <Menu/> -->
+      <Menu/>
 
 
       <!-- эти данные нужно спустить в компонент. для этого в компоненте --props -->
  
-  <ToDoList
-  :todos="todos"
-  @remove-todo="removeTodo"
-  ></ToDoList>
+  <!-- <ToDoList -->
+  <!-- :todos="todos" -->
+  <!-- @remove-todo="removeTodo" -->
+  <!-- ></ToDoList> -->
 
-<addTodo @add-todo="addTodo"></addTodo>
+<!-- <addTodo @add-todo="addTodo"></addTodo> -->
 
 
   </div>
@@ -30,9 +30,9 @@
 // import demo from '@/components/demo'
 // import methods from '@/components/methods'
 // import taskList from '@/components/taskList'
-// import Menu from '@/components/Menu'
-import ToDoList	from '@/components/ToDoList'
-import addTodo from '@/components/addTodo'
+import Menu from '@/components/Menu'
+// import ToDoList	from '@/components/ToDoList'
+// import addTodo from '@/components/addTodo'
 export default {  
   name: 'App',
   components: {
@@ -42,27 +42,32 @@ export default {
     // demo,
     // methods,
     // taskList,
-  //  Menu,
-  ToDoList,
-  addTodo
+   Menu,
+  // ToDoList,
+  // addTodo
   },
   data(){
 return{
-  todos:[
-    {id:1, title:"Купить хлеб", completed: false   }, 
-    {id:2, title:"Купить масло", completed: false},
-    {id:3, title:"Купить пиво", completed: false}
-  ]
+  // todos:[
+  //   {id:1, title:"Купить хлеб", completed: false   }, 
+  //   {id:2, title:"Купить масло", completed: false},
+  //   {id:3, title:"Купить пиво", completed: false}
+  // ]
 }
   },
   methods:{
-    removeTodo(id){
-      this.todos = this.todos.filter(t => t.id !=id)
-    },
-    addTodo(todo){
-      this.todos.push(todo)
-    }
-  }
+    // removeTodo(id){
+    //   this.todos = this.todos.filter(t => t.id !=id)
+    // },
+    // addTodo(todo){
+    //   this.todos.push(todo)
+    // }
+  },
+  // mounted(){
+  //   fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
+  // .then((response) => response.json())
+  // .then(json=>{this.todos = json})
+  // }
 }
 </script>
 
