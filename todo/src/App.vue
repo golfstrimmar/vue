@@ -19,7 +19,7 @@
 							<button class="btn btn-outline-primary" type="button">Select all</button>
 						</span>
 					</div>
-					<input type="text" class="form-control" id='input'>
+					<input type="text" class="form-control" id='input' v-model="input" @keyup.enter="inputHandler()">
 				</div>
 				<div id='actionPanel2' class="mt-2">
 					<div class="btn-group btn-block">
@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<ul class="list-group list-group-flush" id='list'>
-        <li class="list-group-item" v-for="item in list" :key="item">
+        <li class="list-group-item" v-for="item in list" :key="item.id">
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" :id="item.id">
             <label :for="item.id" class="form-check-label">
@@ -65,9 +65,15 @@ export default {
       id: 2,
       content: "Купить пива"
     }
+    data.input = "iii"  
    data.list.push(item1)
     data.list.push(item2)
     return data
+  },
+  methods:{
+    inputHandler(){
+      console.log(this.input)
+    }
   }
 };
 </script>
