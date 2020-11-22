@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <!-- <Mycomponent/> -->
-    <!-- <MycomponentWork/> -->
+    <!-- <Form/> -->
+    <MycomponentWork/>
     <!-- передача данных из досчернего компонента task с помощью метода props -->
     <!-- <task message="Hello" author="David" title="js" description="lorem"></task> -->
     <!-- <methods></methods> -->
       <!-- <demo></demo> -->
       <!-- <taskList></taskList> -->
-      <Menu/>
+      <!-- <Menu/> -->
 
 
       <!-- эти данные нужно спустить в компонент. для этого в компоненте --props -->
@@ -24,25 +24,25 @@
 </template>
 
 <script>
-// import Mycomponent from '@/components/my-component'
-// import MycomponentWork from '@/components/my-component-work'
+// import Form from '@/components/form'
+import MycomponentWork from '@/components/my-component-work'
 // import task from '@/components/task'
 // import demo from '@/components/demo'
 // import methods from '@/components/methods'
 // import taskList from '@/components/taskList'
-import Menu from '@/components/Menu'
+// import Menu from '@/components/Menu'
 // import ToDoList	from '@/components/ToDoList'
 // import addTodo from '@/components/addTodo'
 export default {  
   name: 'App',
   components: {
-    // Mycomponent,
-    // MycomponentWork,
+    // Form,
+    MycomponentWork,
     // task,
     // demo,
     // methods,
     // taskList,
-   Menu,
+  //  Menu,
   // ToDoList,
   // addTodo
   },
