@@ -3,7 +3,12 @@
     <div class="col-sm-4 mx-auto">
 
       <h2 class="reg-title">Регистрация</h2>
+     
+     
       <form @submit.prevent="userRegister" novalidate>
+      
+      <!-- ----------------------------------------------------------------------- -->
+      
         <div v-show="step === 1">
 
           <div v-if="regMessage" class="alert alert-success" role="alert">
@@ -50,7 +55,7 @@
                   type="button" class="btn btn-primary">Следующий шаг</button>
 
         </div>
-
+<!-- ---------------------------------------------------------------------------- -->
         <transition name="slide-fade">
           <div v-show="step === 2">
 
@@ -82,7 +87,7 @@
 
           </div>
         </transition>
-
+<!-- ------------------------------------------------------------------------- -->
         <transition name="slide-fade">
           <div v-show="step === 3">
 

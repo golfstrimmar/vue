@@ -1,14 +1,15 @@
 <template>
   <div id="app">
+    <!-- <FormExample></FormExample> -->
     <!-- <Form/> -->
-    <MycomponentWork/>
+    <!-- <MycomponentWork/> -->
     <!-- передача данных из досчернего компонента task с помощью метода props -->
     <!-- <task message="Hello" author="David" title="js" description="lorem"></task> -->
-    <!-- <methods></methods> -->
+    <methods></methods>
       <!-- <demo></demo> -->
       <!-- <taskList></taskList> -->
       <!-- <Menu/> -->
-
+<!-- <css></css> --> 
 
       <!-- эти данные нужно спустить в компонент. для этого в компоненте --props -->
  
@@ -25,10 +26,12 @@
 
 <script>
 // import Form from '@/components/form'
-import MycomponentWork from '@/components/my-component-work'
+// import FormExample from '@/components/form-example'
+// import MycomponentWork from '@/components/my-component-work'
 // import task from '@/components/task'
 // import demo from '@/components/demo'
-// import methods from '@/components/methods'
+import methods from '@/components/methods'
+// import css from '@/components/css'
 // import taskList from '@/components/taskList'
 // import Menu from '@/components/Menu'
 // import ToDoList	from '@/components/ToDoList'
@@ -36,15 +39,17 @@ import MycomponentWork from '@/components/my-component-work'
 export default {  
   name: 'App',
   components: {
+    // FormExample,
     // Form,
-    MycomponentWork,
+    // MycomponentWork,
     // task,
     // demo,
-    // methods,
+    methods,
+    // css,
     // taskList,
   //  Menu,
   // ToDoList,
-  // addTodo
+  // addTodo,
   },
   data(){
 return{
@@ -82,11 +87,15 @@ return{
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
-  margin-top: 20px;
+  margin: 20px 50px;
 }
 .container{
-margin-top: 50px;
 }
-
-
+hr{
+  background: blue;
+}
+ .devider-title{
+color: purple;
+background: salmon;
+  }
 </style>
