@@ -208,17 +208,56 @@ Counter равен: {{counter}}
     !!!убить приложение!!!
     <span class="icon-notification"></span>
     </button>
+
+<hr>
+api axios
+
+
+<div class="alert alert-warning" role="alert" v-if="errored">
+ Запрос не обработан. Есть ошибки в запросе.
+</div>
+
+<ul>
+  <li v-for="(course, index)  in courses"  :key="index">{{course.ccy}} buy:{{course.buy}} sale:{{course.sale}}</li>
+</ul>
+
+
+
+<hr>
+пушится текст из инпута как отдельный пост в массив постов
+<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="inputWall" placeholder="The wall" @keyup.enter="addPost()"></textarea>
+<ul class="mt-2 list-group">
+  <li v-for="(post,index)  in posts"  :key="index" class="list-group-item">{{post}}</li>
+</ul>
+
+<hr>
+карточка как компонент
+
+<div class="d-flex justify-content-between">
+<CardExample v-for="component in 4" :key="component"></CardExample>
+</div>
+
+<!-- ------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------- -->
+<!-- ------------------------------------------------------------- -->
   </div><!-- container -->
 </template>
 
 
 <script>
 import popup from '@/components/popup'
+import CardExample from '@/components/cardExample'
+import axios from "axios";
+
 
 export default {
-
   data(){
   return{
+    inputWall:null,
+    posts:[],
+    errored:false,
+    courses: [],
    visible: false  ,
     showForm: true,
     msg:"Hello,vue!!!",
@@ -253,18 +292,15 @@ title: "Изменение свойств по чекбоксу"
   },
 
 components:{
-popup
+popup,
+CardExample
 },
-
 methods:{
-//   openPopup(){
-// this.$emit('visible')
-// },
 
-
-// closePopup(){
-// this.$emit('showForm')
-// },
+addPost(){
+  this.posts.push(this.inputWall)
+  this.inputWall=""
+},
   // $refs позволяет напрямую управлять элементом дом
 changeH2(){
 this.$refs.h2.innerText="Привет!"
@@ -320,6 +356,15 @@ console.log("mounted")
  if(localStorage.co){
 this.co=Number(localStorage.co)
 }
+
+
+// запрос данных через api
+axios.get('https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+.then(response => (this.courses = response.data))
+.catch(error=>{
+  console.log(error)
+  this.errored=true
+  })
 },
 beforeUpdate(){
 console.log("beforeUpdate")
@@ -368,6 +413,16 @@ btnTexts(){
 *{
   list-style: none;
 }
+#exampleFormControlTextarea1{
+  resize:none;
+}
+#exampleFormControlTextarea1:focus{
+outline: none;
+}
+#exampleFormControlTextarea1:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+
+
+
   .active{
     background: deepskyblue;
 color: darksalmon;
