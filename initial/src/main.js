@@ -9,7 +9,8 @@ Vue.use(Vuelidate);
 
 Vue.prototype.$axios = axios;
 
-
+// здесь будет храниться экземпляр vue
+export const eventEmiter = new Vue()
 
 new Vue({
   render: h => h(App),

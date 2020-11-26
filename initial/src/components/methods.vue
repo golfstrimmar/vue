@@ -83,17 +83,7 @@ class="btn btn-secondary"
 Counter равен: {{counter}}
 </button>
 <hr>
-<!-- ------------------------------- -->
-счетчик увеличивает и уменьшает на 1
-<br>
-  <div class="container">
-    <h2>{{count}}</h2>
-  <div class="row "> 
-    <button class="btn btn-success" @click="countUp()">увеличит на 1</button>
-    <button class=" btn btn-success ml-2" @click="countDown()">уменьшит на 1</button>
-  </div>	
-</div>
-<hr>
+
 <!-- ----------очищает url от https://--------------------- -->
 очищает url от https://<br>
 <div class="container">
@@ -102,8 +92,6 @@ Counter равен: {{counter}}
   <button @click="cleanerUrl" class="btn btn-primary">Clean Url</button>
 </div>  
 <hr>
-
-
 <!-- ------------------------------- -->
 счетчик <br>
 <h2 >{{co}}</h2> 
@@ -153,7 +141,7 @@ Counter равен: {{counter}}
   <label for="" title="getDate">Проверка времени</label>
 
 
-
+<!-- ----------------------------------------------------------- -->
 	<div class="devider-title"> ref</div> 
 <!-- refs -->
  <div class="conttainer">
@@ -161,7 +149,7 @@ Counter равен: {{counter}}
 <p ref="teext">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus fugiat, possimus reprehenderit alias, pariatur aperiam sunt exercitationem repellendus enim nemo optio ex doloribus expedita deserunt iste nobis neque facilis? Quas.</p>
 <button @click="changeH2" class="btn btn-primary">$refs позволяет напрямую управлять элементом дом</button>
 </div>
-
+<!-- ----------------------------------------------------------------- -->
 <hr>
 <div class="devider-title"> toggle с анимацией/ берем с сайта анимацию с стилями и оборачиваем то что нужно анимироватьв тег transition</div> 
 <!-- refs -->
@@ -236,9 +224,28 @@ api axios
 <div class="d-flex justify-content-between">
 <CardExample v-for="component in 4" :key="component"></CardExample>
 </div>
+<hr>
+<!-- ------------------------------- -->
+
+счетчик увеличивает и уменьшает на 1 .это component
+здесь продемонстрирована валидация вхходящих данных в дочерний компонент<br> props:{
+    message: String
+  },
+<br>
+ <counter :message="message"></counter>
+<hr>
+<!-- ------------------------------------------------------------- -->
+ сделана передача функции к дочернему компоненту а не данных .
+ здесь counterFunction это функция, но она сработает в дочернем компоненте
+   
+<br>
+ <counterFunction :counterFunction="counterFunction" :message="message"></counterFunction>
+<hr>
 
 <!-- ------------------------------------------------------------- -->
-<!-- ------------------------------------------------------------- -->
+ниже два дочерних компонента
+<br>
+
 <!-- ------------------------------------------------------------- -->
 <!-- ------------------------------------------------------------- -->
   </div><!-- container -->
@@ -248,6 +255,8 @@ api axios
 <script>
 import popup from '@/components/popup'
 import CardExample from '@/components/cardExample'
+import counter from '@/components/counter'
+import counterFunction from '@/components/counterFunction'
 import axios from "axios";
 
 
@@ -271,7 +280,7 @@ export default {
     disabled:false,
     fontColor:'#ccc',
     backgroundColor:"yellow",
-  message: "Hello, world!!!", 
+  message: "Hello,world!!!", 
  users: [
       {id:1, name: "Иван" },
       {id:2, name: "Марья" }
@@ -282,7 +291,6 @@ showh2: true,
     hashtags:[],
     mes:"",
     checked: true,
-    count: "0",
     url: "",
     cleanUrl: "",
 numbers	: [1,2,3],	
@@ -293,10 +301,14 @@ title: "Изменение свойств по чекбоксу"
 
 components:{
 popup,
-CardExample
+CardExample,
+counter,
+counterFunction
 },
 methods:{
-
+counterFunction(newval){
+this.message=newval
+},
 addPost(){
   this.posts.push(this.inputWall)
   this.inputWall=""
@@ -330,8 +342,7 @@ this.numbers.push(rnd)
 },  
 nameFunction(){alert('nameFunction')},
 high(){this.counter++;},
-countUp(){this.count ++;},
-countDown(){this.count --;},
+
 cleanerUrl(){
   this.cleanUrl = this.url.replace(/^https?:\/\//, '').replace(/\/$/,'')
 }
