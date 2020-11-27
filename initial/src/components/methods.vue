@@ -243,10 +243,23 @@ api axios
 <hr>
 
 <!-- ------------------------------------------------------------- -->
-ниже два дочерних компонента
+фильтры
 <br>
+<h1>{{message|lowercase }}</h1>
 
+
+<hr>
+<!-- ------------------------------------------------------- -->
+ фильтрацмя списков
+ <br>
+ <input type="text" v-model="searchGame" placeholder="searchGame">
+ <ul>
+   <li v-for="( game, index)  in fiiteredGames"  :key="index">{{game}}</li>
+ </ul>
+ <hr>
 <!-- ------------------------------------------------------------- -->
+здесь показано применение миксина в компоненте и в родителе
+<mixinsExample></mixinsExample>
 <!-- ------------------------------------------------------------- -->
   </div><!-- container -->
 </template>
@@ -257,12 +270,17 @@ import popup from '@/components/popup'
 import CardExample from '@/components/cardExample'
 import counter from '@/components/counter'
 import counterFunction from '@/components/counterFunction'
+import mixinsExample from '@/components/mixinsExample'
+import listMixins from "./mixins/listMixins"
+
 import axios from "axios";
 
 
 export default {
   data(){
   return{
+    searchGame:'',
+    games:['Prototape','GTA' ,'Game' , 'zero' , 'crisis remastered'],// фильтрацмя списков
     inputWall:null,
     posts:[],
     errored:false,
@@ -299,11 +317,22 @@ title: "Изменение свойств по чекбоксу"
 }
   },
 
+mixins:[listMixins],
+
+filters:{
+  // данный фильтр изменит данные на нижний регистр
+lowercase(value){
+  if(!value)
+  return ""
+  return value.toLowerCase()
+}
+},
 components:{
 popup,
 CardExample,
 counter,
-counterFunction
+counterFunction,
+mixinsExample,
 },
 methods:{
 counterFunction(newval){
@@ -394,6 +423,19 @@ console.log("destroyed")
 
 // вычисляется только по мере обращения к свойствам. в остальных случаях при обновлении страницы данные переменных computed берутся из кеша
 computed: {
+  fiiteredGames(){
+
+    return this.games.filter(
+      game => {
+    //  позволяет возвратить индекс искомого элемента в массиве при первом совпадении, или -1 если элемент не найден. 
+    // то есть здесь проверка на наличие данного индекса  и возвращение нового массива из оного элемента
+    // проще говоря введя ерввую букву названия-- получим все название . выведется теперь только названия начинающиеся с этой буквы
+    // при этом можно вводить с маленькой буквы. фильтр преобразует 
+      return game.toLowerCase().indexOf(this.searchGame.toLowerCase()) !== -1
+    }
+    )
+  }
+  ,
   showTextForm(){
     return this.showForm ? "Скрыть форму" : "Показать форму"
   },
@@ -443,10 +485,18 @@ color: darksalmon;
 
   }
 
+
   label{
     margin: 0 0 0 10px;	
   }
 
+input{
+resize:none;
+}
+input:focus{
+  outline: none;
+}
+input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
   .btn{
     margin-top: 20px;
   }
