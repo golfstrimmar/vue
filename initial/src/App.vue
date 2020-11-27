@@ -5,25 +5,22 @@
     <!-- <MycomponentWork/> -->
     <!-- передача данных из досчернего компонента task с помощью метода props -->
     <!-- <task message="Hello" author="David" title="js" description="lorem"></task> -->
-    <methods></methods>
-
+    <!-- <methods></methods> -->
     <!-- <theWall></theWall> -->
       <!-- <demo></demo> -->
       <!-- <taskList></taskList> -->
       <!-- <Menu/> -->
 <!-- <css></css> --> 
  
-<!-- <counterButton> -->
+<counterButton>
   <!-- передача html в дочерний компонент. там должен быть тег slot -->
   
-  <!-- <h3 slot="title" v-color>счетчик</h3> -->
-  <!-- <div class="w-100"></div> -->
+  <h3 slot="title">счетчик</h3>
+  <div class="w-100"></div>
   <!-- something прописано здесь а е в дочернем -->
-  <!-- <p slot="description">{{something}}</p> -->
-
-<!-- </counterButton> -->
-
-<!-- <Button></Button> -->
+  <p slot="description">{{something}}</p>
+</counterButton>
+<Button></Button>
 
       <!-- эти данные нужно спустить в компонент. для этого в компоненте --props -->
  
@@ -44,11 +41,10 @@
 // import MycomponentWork from '@/components/my-component-work'
 // import task from '@/components/task'
 // import demo from '@/components/demo'
-import methods from '@/components/methods'
-
+// import methods from '@/components/methods'
 // связь двух компонентов Button counterButton 
-// import Button from '@/components/Button'
-// import counterButton from '@/components/counterButton'
+import Button from '@/components/Button'
+import counterButton from '@/components/counterButton'
 
 // import theWall from '@/components/theWall'
 // import css from '@/components/css'
@@ -64,10 +60,9 @@ export default {
     // MycomponentWork,
     // task,
     // demo,
-    methods,
-   
-    // Button,
-    // counterButton,
+    // methods,
+    Button,
+    counterButton,
 // theWall,
     // css,
     // taskList,
