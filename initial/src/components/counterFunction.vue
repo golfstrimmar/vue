@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <h1 @click="counterFunction('ooo')" >{{message}}</h1>
+    <h1 @click="counterFunction('')" >{{message}}</h1>
   </div>
 </template>
 <script>

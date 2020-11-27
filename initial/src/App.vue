@@ -5,22 +5,22 @@
     <!-- <MycomponentWork/> -->
     <!-- передача данных из досчернего компонента task с помощью метода props -->
     <!-- <task message="Hello" author="David" title="js" description="lorem"></task> -->
-    <!-- <methods></methods> -->
+    <methods></methods>
     <!-- <theWall></theWall> -->
       <!-- <demo></demo> -->
       <!-- <taskList></taskList> -->
       <!-- <Menu/> -->
 <!-- <css></css> --> 
  
-<counterButton>
+<!-- <counterButton> -->
   <!-- передача html в дочерний компонент. там должен быть тег slot -->
   
-  <h3 slot="title">счетчик</h3>
-  <div class="w-100"></div>
+  <!-- <h3 slot="title">счетчик</h3> -->
+  <!-- <div class="w-100"></div> -->
   <!-- something прописано здесь а е в дочернем -->
-  <p slot="description">{{something}}</p>
-</counterButton>
-<Button></Button>
+  <!-- <p slot="description">{{something}}</p> -->
+<!-- </counterButton> -->
+<!-- <Button></Button> -->
 
       <!-- эти данные нужно спустить в компонент. для этого в компоненте --props -->
  
@@ -41,11 +41,12 @@
 // import MycomponentWork from '@/components/my-component-work'
 // import task from '@/components/task'
 // import demo from '@/components/demo'
-// import methods from '@/components/methods'
-// связь двух компонентов Button counterButton 
-import Button from '@/components/Button'
-import counterButton from '@/components/counterButton'
 
+import methods from '@/components/methods'
+
+// связь двух компонентов Button counterButton 
+// import Button from '@/components/Button'
+// import counterButton from '@/components/counterButton'
 // import theWall from '@/components/theWall'
 // import css from '@/components/css'
 // import taskList from '@/components/taskList'
@@ -60,9 +61,9 @@ export default {
     // MycomponentWork,
     // task,
     // demo,
-    // methods,
-    Button,
-    counterButton,
+    methods,
+    // Button,
+    // counterButton,
 // theWall,
     // css,
     // taskList,
@@ -72,7 +73,7 @@ export default {
   },
   data(){
 return{
-  something: "какое-то описание",
+  // something: "какое-то описание",
   // todos:[
   //   {id:1, title:"Купить хлеб", completed: false   }, 
   //   {id:2, title:"Купить масло", completed: false},
@@ -104,6 +105,11 @@ return{
 body{
   background:WhiteSmoke;
 }
+textarea{
+  resize:none;
+}
+textarea:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
