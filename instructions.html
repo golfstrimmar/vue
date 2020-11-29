@@ -246,5 +246,24 @@ $destroy()
    const post_id = this.wallPosts.findIndex(post => post.id === id)
 
 
-===========связь компоненто внапрямую
-counterButton и Button 
+=================отлавливание события изменения размеров окна
+ data() {
+    return {
+      show: true,
+      width: 0,
+    }
+  },
+  methods: {
+    updateWidth() {
+     --- переменной присваиваем размер окна
+    this.width = window.innerWidth;
+     if (this.width < 768) {
+            console.log(this.show)
+            }
+            return this.show
+  },
+  --слушаем событие изменение размеров окна и вешаем на это событие функцию updateWidth
+created() {
+  window.addEventListener('resize', this.updateWidth);
+},
+

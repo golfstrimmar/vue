@@ -1,16 +1,20 @@
 <template>
     <div class="container">
-        <h1>Страница модалок</h1>
-        <hr>  
+  
+здесь будет попап
     </div>
 </template>
   
 <script>
 export default {
-
+data() {
+  return {
+    
+  }
+},
   }
 </script>
   
-<style	lang="css" scoped>
-  
+<style	lang="css" >
+ 
 </style>

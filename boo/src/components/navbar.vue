@@ -1,28 +1,22 @@
 <template>
   <div class="contaner">
     <!-- https://bootstrap-vue.org/docs/components/navbar -->
-    <b-navbar toggleable="lg" type="light" variant="success" fixed="top">
+    <b-navbar toggleable="md" type="light" variant="success" fixed="top">
       <b-navbar-brand href="#"><img src="https://placekitten.com/g/40/40" alt="Kitten"></b-navbar-brand>
 
-      <b-navbar-toggle target="nav-collapse">
-        <!-- <transition name="fade"> -->
-        <span class="icomoon icon-menu"  
-        v-if="show"
-        @click="show = !show ;show1 = !show1" 
-        key="menu"></span>
-        <!-- </transition> -->
-        <!-- <transition name="fade"> -->
-        <span class="icomoon  icon-cross" 
-        v-if="updateWidthClose()"
-        @click="show = !show ;show1 = !show1"
-        key="clear"></span>
-        <!-- </transition> -->
-      </b-navbar-toggle>
+<!-- здесь просто взял блок иконок с другого навбара -->
+<!-- https://bootstrap-vue.org/docs/components/navbar#b-navbar-toggle-and-b-collapse-is-nav -->
+    <b-navbar-toggle target="nav-collapse">
+        <template #default="{ expanded }">
+          <span class="icomoon icon-cross" v-if="expanded"></span>
+          <span class="icomoon icon-menu" v-else></span>
+        </template>
+    </b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
         <!-- https://bootstrap-vue.org/docs/components/navbar -->
 
-        <b-navbar-nav justified class="col-lg-6">
+        <b-navbar-nav justified class="col-lg-8">
 
           <router-link
            tag="b-nav-item" 
@@ -53,33 +47,10 @@
               <span @click="show = !show">СlickButtons</span>
               </router-link
             >
-            <router-link
-              tag="b-dropdown-item"
-              :to="{ name: 'trans' }"
-              active-class="active"
-              @click="show = !show"
-              >
-              <span @click="show = !show">Transitions</span>
-              </router-link
-            >
-            <router-link
-              tag="b-dropdown-item"
-              :to="{ name: 'popup' }"
-              active-class="active"
-              @click="show = !show"
-              >
-              <span @click="show = !show">Popup</span>
-              </router-link
-            >
-             <router-link
-              tag="b-dropdown-item"
-              :to="{ name: 'componentsActions' }"
-              active-class="active"
-              @click="show = !show"
-              >
-              <span @click="show = !show">ComponentsActions</span>
-              </router-link
-            >
+           
+          
+           
+            
              <router-link
               tag="b-dropdown-item"
               :to="{ name: 'formElements' }"
@@ -93,6 +64,45 @@
                                                         
             <!-- <b-dropdown-item  href = "#" > form elements </b-dropdown-item >  -->
           </b-nav-item-dropdown>
+          <router-link
+              tag="b-nav-item"
+              :to="{ name: 'computed' }"
+              active-class="active"
+              @click="show = !show"
+              >
+              <span @click="show = !show">Computed</span>
+              </router-link
+            >
+          <router-link
+              tag="b-nav-item"
+              :to="{ name: 'trans' }"
+              active-class="active"
+              @click="show = !show"
+              >
+              <span @click="show = !show">Transitions</span>
+              </router-link
+            >
+            
+             <router-link
+              tag="b-nav-item"
+              :to="{ name: 'componentsActions' }"
+              active-class="active"
+              @click="show = !show"
+              >
+              <span @click="show = !show">ComponentsActions</span>
+              </router-link
+            >
+          <router-link
+              tag="b-nav-item"
+              :to="{ name: 'different' }"
+              active-class="active"
+              @click="show = !show"
+              >
+              <span @click="show = !show">Разное</span>
+              </router-link
+            >
+         
+         
           <router-link
             tag="b-nav-item"
             :to="{ name: 'about' }"
@@ -182,23 +192,29 @@ export default {
   },
   methods: {
      updateWidth() {
-    // this.width = window.innerWidth;
-    //  if (this.width < 768) {
+    this.width = window.innerWidth;
+     if (this.width < 768) {
                 // this.show = true
+
             // }else{this.show = true}
             // console.log(this.show)
             // return this.show
+            }
   },
      updateWidthClose() {
     this.width = window.innerWidth;
      if (this.width < 768) {
                 this.show1 = false
+                // this.show1 = true
                 this.show = true
-                // if(this.show= false){
-                //   this.show1=false
-                // }
+                // this.show = false
+                if(this.show= false){
+                  this.show1=!this.show1  
+                }
             }
-            console.log(this.show1)
+            
+            console.log("show1---"+this.show1)
+            console.log("show---"+this.show)
             return this.show1
   }
 },
@@ -210,13 +226,17 @@ created() {
 
 <style lang="css">
 
+
+
+
+
 .router-link-exact-active .nav-link {
   color: red !important;
   font-style: bold;
   transition: all 0.5s;
 }
 
-
+/* ------------------------------------------------------------------- */
 .navbar-nav {
   border: 1px solid purple !important;
   padding: 0 0 0 0;	
@@ -245,8 +265,8 @@ created() {
 .nav-item > ul.show {
   transition: min-height .2s ease-in-out, height .2s ease-in-out, opacity .3s ease-in-out  !important;
   transition: all .3s ease-in-out;
-  height: 200px !important;
-  min-height: 200px !important;
+  height: 300px !important;
+  min-height: 300px !important;
   opacity: 1;
   visibility: visible;
 }
@@ -275,17 +295,8 @@ created() {
 }
 /* -------------------------------------------------- */
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-  
-}
-.icomoon{
-display: block !important;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
+.navbar-toggler{
+  font-size: 1rem;
 }
 
 

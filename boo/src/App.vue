@@ -22,7 +22,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin: 60px 0 0 0;
+  margin: 200px 0 0 0;
 }
 .container{
   background: Bisque;
@@ -48,5 +48,7 @@ h1{
 h2{
 color:  DarkSlateGray;
 }
+
+input:focus::-webkit-input-placeholder {copacity: 0; transition: opacity 0.3s ease;}
 
 </style>
