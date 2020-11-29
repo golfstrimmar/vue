@@ -24,5 +24,29 @@ export default {
   color: #2c3e50;
   margin: 60px 0 0 0;
 }
+.container{
+  background: Bisque;
+  border-radius: 4px;
+}
+*{
+  box-sizing: border-box;
+  list-style: none;
+}
+body{
+  background:WhiteSmoke;
+}
+textarea{
+  resize:none;
+}
+textarea:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+hr{
+  background: #FF5F0F;
+}
+h1{
+  color: SlateGray;
+}
+h2{
+color:  DarkSlateGray;
+}
 
 </style>

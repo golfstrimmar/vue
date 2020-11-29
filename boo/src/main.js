@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import App from './App'
+import "./assets/css/fonts.css";
+
+
 
 // bootstrap
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
