@@ -1,6 +1,17 @@
 <template>
     <div class="container">
-        <h1>Страница элементов форм</h1>
+        <h1>Страница элементов </h1>
+
+<hr> 
+ хороший селект из bootstrap-vue
+
+  <div>
+    <b-form-select v-model="selected" :options="options"></b-form-select>
+    <div class="mt-3">Selected: <strong>{{ selected }}</strong></div>
+  </div>
+
+
+
         <hr>  
   v-model.number будет валидировать входные данные --- только цифры
 
@@ -120,8 +131,14 @@ select
          </option>
   </select>
   <p>{{select}}</p>
+<!-- -------------------------------- -->
 
 
+
+<!-- --------------------------- -->
+<!-- --------------------------- -->
+<!-- --------------------------- -->
+<!-- --------------------------- -->
     </div>
 </template>
   
@@ -134,6 +151,14 @@ data() {
     radio:'',
     select:'планшеты',
     selects:['бытовая техника','планшеты','телефоны'],
+      selected: null,
+        options: [
+          { value: null, text: 'Please select some item' },
+          { value: 'a', text: 'This is First option' },
+          { value: 'b', text: 'Default Selected Option' },
+          { value: 'c', text: 'This is another option' },
+          { value: 'd', text: 'This one is disabled', disabled: true }
+        ]
   }
 },
   }

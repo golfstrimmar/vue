@@ -1,5 +1,19 @@
+Имя пакета изменилось с vue-cli на @vue/cli. Если у вас установлена глобально предыдущая версия пакета vue-cli (1.x или 2.x), то необходимо сначала удалить её командой npm uninstall vue-cli -g или yarn global remove vue-cli.
+
+
+
 создать новую папку с названием проекта 
 по ней открыть новый терминал   -- ореn in integrated terminal
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!! самый лучший способ ======== с webpack ==
+vue init webpack ...название проекта...
+<!-- vue create webpack название... -->
+npm i --- загрузит node_modules
+npm run dev	
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
 без webpack===============
 в терминале --- vue create название --- эта команда создаст экземпляр vue
@@ -8,17 +22,24 @@ npm i
 npm run serve 
 --- откроет  localhost 8080
 
-с webpack========================== название проекта
-npm i --- загрузит node_modules
-npm run dev	 
 
-создать в мененджере проектов ================
-vue ui
 
 если нужно bootstrap то после создания проекта добавить
 npm install  bootstrap-vue bootstrap
+в main.js
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 
+
+
+ 
+
+создать в мененджере проектов ================
+vue ui
 npm uninstall <package name>
   
 =====================================

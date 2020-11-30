@@ -1,6 +1,9 @@
 <template>
     <div class="container">
         <h1>Post {{ id }} </h1>
+
+
+        
         <!-- кнопка возврата --https://router.vuejs.org/ru/guide/essentials/navigation.html-->
       <button class="btn-primary btn" @click="back">  Назад</button>
     </div>
