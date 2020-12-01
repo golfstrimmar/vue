@@ -191,35 +191,9 @@ export default {
     }
   },
   methods: {
-     updateWidth() {
-    this.width = window.innerWidth;
-     if (this.width < 768) {
-                // this.show = true
-
-            // }else{this.show = true}
-            // console.log(this.show)
-            // return this.show
-            }
-  },
-     updateWidthClose() {
-    this.width = window.innerWidth;
-     if (this.width < 768) {
-                this.show1 = false
-                // this.show1 = true
-                this.show = true
-                // this.show = false
-                if(this.show= false){
-                  this.show1=!this.show1  
-                }
-            }
-            
-            console.log("show1---"+this.show1)
-            console.log("show---"+this.show)
-            return this.show1
-  }
+   
 },
 created() {
-  window.addEventListener('resize', this.updateWidth);
 },
 }
 </script>

@@ -1,0 +1,130 @@
+===========  повторяющиеся блоки
+например пункты навигации с роутами даже
+    <router-link
+      tag="b-nav-item"
+       variant="outline-primary"
+       v-for="( item, index)  in menuItems"
+       active-class="active"
+        :key="index"
+        :to="item.route"
+       >  
+        <b-icon  :icon = "item.icon"> </b-icon> 
+      {{item.title}}
+    </router-link>
+
+делается массив и вычисляемые свойства
+
+ computed:{
+      menuItems(){
+        return [
+          {
+            route: "/",
+          },
+          {
+            icon: 'eye',
+            title: "Читать",
+            route: "/books",
+          },
+        ...
+        ]
+      }
+    }
+
+
+
+==========  шифр цезаря
+// export default {
+//   name: "App",
+//   data() {
+//     return {
+//       alphabet:
+//         "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя",
+//       alphbetCifr: "",
+//       text: "",
+//       textChiper: "",
+//       selected: null
+//       // удаляется потому как будут генерироваться в computed
+//       // options: [
+//       //   { value: null, text: 'Сдвиг' },
+
+//       // ]
+//     };
+//   },
+
+//   methods: {
+//     encript() {
+//       // берем алфавит
+//       this.alphbetCifr = this.alphabet;
+//       // dspsdftv функцию, которая делаем алфавит-мутант. она отрежет selected символов и добавит в конец отрезок. внутри алфавит будет разбит на символы .split("").join('') --собирает в строку отдельные элементы массива
+//       this.alphbetCifr = this.shiftArray(
+//         this.alphbetCifr.split(""),
+//         this.selected
+//       ).join("");
+//       this.textChiper = this.criptText(this.text, this.alphabet,this.alphbetCifr )
+//     },
+//     decript() {
+//             // берем алфавит
+//       this.alphbetCifr = this.alphabet;
+//       // dspsdftv функцию, которая делаем алфавит-мутант. она отрежет selected символов и добавит в конец отрезок. внутри алфавит будет разбит на символы .split("").join('') --собирает в строку отдельные элементы массива
+//       this.alphbetCifr = this.shiftArray(
+//         this.alphbetCifr.split(""),
+//         this.selected
+//       ).join("");
+//       this.textChiper = this.criptText(this.text, this.alphbetCifr,this.alphabet )
+//     },
+//     // принимаем исходный массив то есть алфавит----arr . число на которое сдвигаем--- num.отрезаем исходный массив на количество символов slice(num) и прибавляем в конец срез от 0 до количества слвига num-- arr.slice(0, num)
+//     shiftArray(arr, num) {
+//       return arr.slice(num).concat(arr.slice(0, num));
+//     },
+//     criptText(text, alphabet, alphbetCifr){
+//       const namArr = []
+//       const textArr = text.split('')
+
+//       // проверка-каждая буква есть ли в выбранном алфавите 
+//       textArr .forEach(el =>{
+//         // indexOf возвращает  -1 если элемент есть не наайден
+// if(alphabet.indexOf(el) !== -1){
+//   // добавляем в массив индексы расположения букв в исходном алфавите 
+// namArr.push(alphabet.indexOff(el))
+// }else{
+//   // если элемента нет, то в массив добавляется просто сам элемент, а не индекс
+//   namArr.push(el)
+// }
+//       })
+   
+// // замена на букву из криптованного алфавита
+
+// return namArr.map(n=>{
+// let arr =[]
+
+// // иначе если это символ - оставить как есть
+// if (Number.isInteger(n)){
+// arr = alphbetCifr[n]
+// }else{
+//   arr = n
+// }
+// return arr
+// }).join('')
+//  },
+
+//   },
+  
+
+//   // генерируем options
+//   // вычисляем  массив options из 33 элементов, каждый из которых состоит из значения и текста.
+//   computed: {
+//     options() {
+//       // первое значение
+//       let options = [{ value: null, text: "Сдвиг" }];
+//       for (let i = 1; i <= 33; i++) {
+//         options.push({
+//           value: i,
+//           text: i
+//         });
+//       }
+
+//       return options;
+//     }
+//   }
+// };
+// </script>

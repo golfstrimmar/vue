@@ -288,3 +288,34 @@ created() {
   window.addEventListener('resize', this.updateWidth);
 },
 
+
+============  иконки 
+https://icons.getbootstrap.com/     -ищем подходящую
+
+<b-icon  :icon = "название"> </b-icon> 
+
+можно все иконки запулить в цикле . здесь выйдут синие кнопки с иконками
+ <b-button
+       variant="outline-primary"
+       v-for="( item, index)  in menuItems"
+         :key="index"
+          to="/" 
+       >  
+        <b-icon  :icon = "item.icon"> </b-icon> 
+      {{item.title}}
+      </b-button>
+
+   computed:{
+      menuItems(){
+        return [
+          {
+            icon: 'align-end',
+            title: "Читать",
+            // route: "/books",
+          }
+        ]
+      }
+    }     
+
+=============== цвета
+var(--primary);
