@@ -2,6 +2,12 @@
     <div class="container">
         <h1>Страница элементов </h1>
 
+
+
+
+
+
+
 <hr> 
  хороший селект из bootstrap-vue
 

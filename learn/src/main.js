@@ -6,6 +6,19 @@ import "./assets/css/fonts.css";
 
 
 
+
+
+// firebase;
+import firebaseConfig from "./config/firebase"
+import firebase from "firebase"
+firebase.initializeApp(firebaseConfig);
+
+
+
+
+
+
+
 // BootstrapVue;
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 Vue.use(BootstrapVue);

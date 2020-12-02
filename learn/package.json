@@ -10,7 +10,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "bootstrap-vue": "^2.20.0",
+    "bootstrap": "^4.5.3",
+    "bootstrap-vue": "^2.20.1",
+    "firebase": "^8.1.1",
     "vue": "^2.6.12",
     "vue-router": "^3.0.1",
     "vuex": "^4.0.0-rc.2"
