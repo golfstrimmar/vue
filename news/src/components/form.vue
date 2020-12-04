@@ -9,7 +9,12 @@
 
 <b-icon icon="tools"></b-icon>
 <b-icon icon="person-fill"></b-icon>
-
+ 
+ <b-dropdown text="Button text via Prop">
+    <b-dropdown-item href="#">An item</b-dropdown-item>
+    <b-dropdown-item href="#">Another item</b-dropdown-item>
+  </b-dropdown>
+ 
   <div style="font-size: 4rem;" class="mb-3">
     <b-icon icon="camera"></b-icon>
     <b-icon icon="camera" rotate="45"></b-icon>
