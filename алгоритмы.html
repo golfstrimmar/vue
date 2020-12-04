@@ -1,3 +1,35 @@
+
+
+
+
+
+=============  вывести в цикле карточки 
+<b-card
+     :title="card.title"
+     img-alt="Image" 
+     img-top
+     v-for="(card , index)  in cards"  :key="index"
+     :img-src='card.url'
+     >
+      <b-card-text>
+       {{card.text}}
+      </b-card-text>
+     </b-card>
+
+data: () => ({   }),
+     cards: [
+{
+  title:"title1",
+  url: 'https://picsum.photos/300/300/?image=41',
+  text:" This card has even longer content than the first to show that equal height action.",
+},
+{
+   title:"title2",
+  url: 'https://picsum.photos/300/300/?image=41',
+  text:"This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.",
+},
+     ]
+  }),
 ============= поднять событие в родителя и передать другому потомку ==== без vuex
 
 потомок------

@@ -7,23 +7,35 @@
           <b-icon icon="cloud-upload" aria-hidden="true"></b-icon>
         </b-button>
 
-<b-icon icon="tools"></b-icon>
-<b-icon icon="person-fill"></b-icon>
+
+
+<b-icon icon="tools"  animation="throb"></b-icon>
+<b-icon-person-fill animation="cylon"/> 
+
+<b-icon-alarm 
+font-scale="3" 
+variant="primary"
+animation="spin"
+ />
  
- <b-dropdown text="Button text via Prop">
-    <b-dropdown-item href="#">An item</b-dropdown-item>
-    <b-dropdown-item href="#">Another item</b-dropdown-item>
-  </b-dropdown>
- 
+
   <div style="font-size: 4rem;" class="mb-3">
     <b-icon icon="camera"></b-icon>
-    <b-icon icon="camera" rotate="45"></b-icon>
+    <b-icon icon="camera" rotate="45" variant="danger"></b-icon>
     <b-icon icon="camera" rotate="90"></b-icon>
     <b-icon icon="camera" rotate="180"></b-icon>
     <b-icon icon="camera" rotate="270"></b-icon>
-    <b-icon icon="camera" rotate="-45"></b-icon>
+    <b-icon icon="camera" rotate="-45" variant="info"></b-icon>
   </div>
  
+ <div>
+
+   <!-- https://bootstrap-vue.org/docs/components/form-rating -->
+    <b-form-rating v-model="value" variant="success" stars="15"/>
+    <p class="mt-2">Value: {{ value }}</p>
+  </div>
+
+
 
   <b-form-textarea
     id="textarea-no-resize"
@@ -76,7 +88,8 @@
     data() {
       return {
         text1: '',
-        text2: ''
+        text2: '',
+         value: "3"
       }
     },
     methods: {

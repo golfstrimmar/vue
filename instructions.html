@@ -31,7 +31,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 
-
+npm install vuetify
 
  
 
@@ -42,6 +42,7 @@ npm uninstall <package name>
 
 ++++++++++++++++++++++++++++++++++++++++++ краткая справка 
 this.$emit('visibleChange', false)
+
 
 
 
@@ -308,15 +309,22 @@ created() {
 
 ============  иконки 
 https://icons.getbootstrap.com/     -ищем подходящую
-
+<b-icon icon="person-fill"></b-icon>
+<b-icon-person-fill/>
+<b-icon 
+icon="alarm" 
+font-scale="3" 
+variant="primary"
+ animation="spin"
+ >
+или
 <b-icon  :icon = "название"> </b-icon> 
-
 можно все иконки запулить в цикле . здесь выйдут синие кнопки с иконками
  <b-button
        variant="outline-primary"
        v-for="( item, index)  in menuItems"
          :key="index"
-          to="/" 
+          :to="item.route" 
        >  
         <b-icon  :icon = "item.icon"> </b-icon> 
       {{item.title}}
@@ -328,7 +336,7 @@ https://icons.getbootstrap.com/     -ищем подходящую
           {
             icon: 'align-end',
             title: "Читать",
-            // route: "/books",
+            route: "/books",
           }
         ]
       }
