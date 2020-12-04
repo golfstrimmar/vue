@@ -39,6 +39,8 @@ textarea{
   resize:none;
 }
 textarea:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+
 hr{
   background: #FF5F0F;
 }

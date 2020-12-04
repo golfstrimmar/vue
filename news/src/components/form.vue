@@ -18,9 +18,7 @@
     <b-icon icon="camera" rotate="270"></b-icon>
     <b-icon icon="camera" rotate="-45"></b-icon>
   </div>
-  <b-col md="6" class="mb-3">
-      <b-icon icon="arrow-clockwise" animation="spin-pulse" font-scale="4"></b-icon>
-  </b-col>
+ 
 
   <b-form-textarea
     id="textarea-no-resize"
