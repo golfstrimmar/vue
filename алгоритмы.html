@@ -1,3 +1,41 @@
+============= поднять событие в родителя и передать другому потомку ==== без vuex
+
+потомок------
+<button @click="btnClick">Add</button>
+по нажатию на кнопку в родителя пойдет событие btnClicked
+methods: {
+btnClick() {
+this.$emit('btnClicked')
+}
+}
+родитель---------
+ у него есть еще потомок v-header и он ему передает данные
+ <v-header
+    :isDropdownVisible="isDropdownVisible"
+    />
+
+
+
+data(){
+  return{
+    isDropdownVisible: false
+  },
+ methods: {
+btnClicked(){
+        this.isDropdownVisible=true
+  }
+} 
+
+второй потомок------------------- к нему приходит уже готовое значение , которое сгенерировал общий родитель
+<div v-if="isDropdownVisible" ></div>
+props:{
+  isDropdownVisible: {
+    type: Boolean,
+    default: false
+  }
+},
+по ходу клик по кнопке на удаленном компоненте например чего-нибудь откроет в другом компоненте
+
 ===========  повторяющиеся блоки
 например пункты навигации с роутами даже
     <router-link

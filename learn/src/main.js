@@ -28,15 +28,20 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 
 // vuex;
-// import Vuex from "vuex";
-// Vue.use(Vuex);
-
+Vue.use(Vuex);
+import Vuex from "vuex";
+import store from "./store";
+Vue.use(Vuex);
 
 Vue.config.productionTip = false
 
 new Vue({
-  el: '#app',
+  el: "#app",
   router,
+  store,
   components: { App },
-  template: '<App/>'
-})
+  template: "<App/>"
+  
+});
+
+
