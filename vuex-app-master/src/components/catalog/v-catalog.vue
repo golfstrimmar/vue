@@ -1,7 +1,6 @@
 <template>
   <div class='v-catalog'>
     <v-catalog-item
-    @btnClicked="btnClicked"
     ></v-catalog-item>
   </div>
 </template>
@@ -19,9 +18,7 @@
     },
     // --------------------
     methods: {
-      btnClicked(){
-        this.$emit('btnClicked')
-      }
+    
     }
 // ---------------------------------------
 

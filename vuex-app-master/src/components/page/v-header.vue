@@ -4,15 +4,13 @@
       <span class="cart">Cart</span>
       <div
           class="cart__dropdown"
-          
-          v-if="isDropdownVisible"
-
+          v-if="DROPDOWN_STATE"
       >
         <span>Товар в корзине</span>
         <button class="to_cart">Перейти</button>
       </div>
     </div>
-    <!-- v-if="DROPDOWN_STATE" -->
+    <!--  -->
   </div>
 </template>
 
@@ -21,24 +19,12 @@
   export default {
     name: "v-header",
 
-// -------------
-props:{
-  isDropdownVisible: {
-    type: Boolean,
-    default: false
-  }
-},
-// -------------
-
-
-
     data() {
       return {
-
       }
     },
     computed: {
-      ...mapGetters([
+      ...mapGetters([                  
         'DROPDOWN_STATE'
       ])
     }

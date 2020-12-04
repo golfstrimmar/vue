@@ -1,3 +1,7 @@
+
+<!-- https://www.youtube.com/watch?v=5lBf-Fm4io4&t=1294s&ab_channel=GoFrontend -->
+
+
 # vuex-app
 
 ## Project setup

@@ -1,7 +1,7 @@
 <template>
   <div class='v-main-wrapper'>
     <v-header
-    :isDropdownVisible="isDropdownVisible"
+    
     />
     <v-content
     @btnClicked="btnClicked"
@@ -22,15 +22,13 @@
 
 data(){
   return{
-    isDropdownVisible: false
+   
   }
 
 },
 // ------------------------------------------------
 methods: {
-btnClicked(){
-        this.isDropdownVisible=true
-      }
+
 }
 
 

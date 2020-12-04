@@ -27,9 +27,7 @@
         'TOGGLE_DROPDOWN'
       ]),
       btnClick() {
-        // this.TOGGLE_DROPDOWN(),
-        console.log(123),
-        this.$emit('btnClicked')
+        this.TOGGLE_DROPDOWN()
       }
     }
   }
