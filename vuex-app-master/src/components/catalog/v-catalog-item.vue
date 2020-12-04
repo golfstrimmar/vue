@@ -4,7 +4,7 @@
     <p>Курс по Vue.js</p>
     <br>
     <p>10 000 ₽</p>
-    <button @click="btnClick" class="to_cart">Add to cart</button>
+    <button @click="btnClick" class="btn btn-primary">Add to cart</button>
   </div>
 </template>
 
