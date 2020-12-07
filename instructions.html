@@ -1,27 +1,16 @@
 Имя пакета изменилось с vue-cli на @vue/cli. Если у вас установлена глобально предыдущая версия пакета vue-cli (1.x или 2.x), то необходимо сначала удалить её командой npm uninstall vue-cli -g или yarn global remove vue-cli.
 
 
-
-создать новую папку с названием проекта 
-по ней открыть новый терминал   -- ореn in integrated terminal
-
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!! самый лучший способ ======== с webpack ==
+====== с webpack 
 vue init webpack ...название проекта...
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+=============== без webpack
+в терминале --- vue create название 
 
+=========== vuetify
+vue add vuetify
 
-без webpack===============
-в терминале --- vue create название --- эта команда создаст экземпляр vue
-npm i 
---- загрузит node_modules
-npm run serve 
---- откроет  localhost 8080
-
-
-
-если нужно bootstrap то после создания проекта добавить
+==========  bootstrap 
 npm install  bootstrap-vue bootstrap
 в main.js
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
@@ -30,25 +19,37 @@ Vue.use(IconsPlugin);
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
+========= vue-router
+vue add router
+<router-link to="/foo">Перейти к Foo</router-link><!-- это обычно в navbar -->
+<router-view></router-view><!--это-в app.vue--- вообще  в какой файл поставишь--- туда и будут передаваться странички -->
 
-npm install vuetify
+========= vuex
+npm install vuex --save
 
- 
-
-создать в мененджере проектов ================
-vue ui
-npm uninstall <package name>
-  
+========= axios
+npm i axios
+import axios from 'axios'
+Vue.prototype.axios = axios;
 
 ++++++++++++++++++++++++++++++++++++++++++ краткая справка 
+++++++++++++++++++++++++++++++++++++++++++ краткая справка 
+++++++++++++++++++++++++++++++++++++++++++ краткая справка 
+++++++++++++++++++++++++++++++++++++++++++ краткая справка 
+++++++++++++++++++++++++++++++++++++++++++ краткая справка 
+|
+lang="pug">
+vbase
+import Navbar from "@/components/navbar"<!-- @--отсчет от папки src -->
+,components: {Navbar},
+,methods:{},
 this.$emit('visibleChange', false)
+props:['photo'],
+++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++
 
-
-
-
-
-
-++++++++++++++++++++++++++++++++++++++++++
 
 ======================== иконки bootstrap
 <b-icon  :icon = "icon"> </b-icon> 
@@ -344,3 +345,10 @@ variant="primary"
 
 =============== цвета
 var(--primary);
+
+========== картинки для тестов
+https://picsum.photos/1920/1080?random
+https://cdn.pixabay.com/photo/2020/07/12/07/47/bee-5396362_1280.jpg
+
+============ фэйковое api
+https://jsonplaceholder.typicode.com/photos?_limit=10
