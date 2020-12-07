@@ -1,19 +1,51 @@
 vue add vuetify
 
 
-<v-container></v-container>
-<v-row></v-row>
-<v-col cols="4"></v-col>
-<v-card></v-card>
-<v-card-title></v-card-title>
-<v-card-text></v-card-text>
-<v-img :src="photo.url"></v-img>
-<v-text-field></v-text-field>инпут
-<v-file-input></v-file-input>это поиск файла в компе
-<v-dialog></v-dialog>модалка
-<v-img></v-img>
-<!-- https://vuetifyjs.com/en/components/app-bars/ -->
- <v-app-bar color="deep-purple accent-4" dark></v-app-bar>
-        
- <!-- https://vuetifyjs.com/en/components/grids/#usage -->--- сдвиигает все вправо до упора
-<v-spacer></v-spacer>  
+lang="pug">
+v-app
+v-container
+v-row
+v-col( cols="4")
+router-view
+router-link(text  v-for="( menuItem, i)  in menuItems"  :key="i":to="menuItem.route") 
+
+v-app-bar( color="deep-purple accent-4" dark)
+
+
+v-toolbar
+v-toolbar-title(v-text="'Learn  German'")
+v-toolbar-items -- содеримое на всю высоту
+
+
+v-btn(large text) Пункт1 --прозрачная
+v-app-bar-nav-icon   ---burger
+v-icon
+i.mdi.mdi-water-off 
+v-navigation-drawer(absolute  temporary v-model: "drawer" ) --выезжающий сайтбар
+
+v-list
+v-list-group
+v-list-item
+v-list-item-action
+v-list-item-action-text
+v-list-item-avatar
+v-list-item-content
+v-list-item-group
+v-list-item-icon
+v-list-item-subtitle
+v-list-item-title
+
+
+
+v-spacer
+v-card
+v-card-title
+v-card-text
+v-img(:src="photo.url") 
+
+v-text-field            ----инпут
+v-file-input          ------поиск файла в компе
+v-dialog              ---------модалка
+
+
+
