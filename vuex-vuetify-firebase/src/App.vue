@@ -1,20 +1,20 @@
 <template lang="pug">
 v-app
-  app-header
-    Navbar
-  v-content
-    router-view
-  app-footer
+  Navbar
+  router-view
+  AppFooter
 </template>
 
 <script>
 import Navbar from './components/navbar';
+import AppFooter from './components/AppFooter';
 
 export default {
   name: 'App',
 
   components: {
     Navbar,
+    AppFooter,
   },
 
   data: () => ({

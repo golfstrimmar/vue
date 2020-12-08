@@ -7,7 +7,7 @@ import Vuex from "vuex";
 
 import "./assets/ress.min.css"
 import "./assets/reset.scss"
-import "./assets/null.scss"
+// import "./assets/null.scss"
 
 
 

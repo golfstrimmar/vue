@@ -1,0 +1,130 @@
+vue add vuetify
+
+
+
+сейчас  -- SASS variables ?
+
+<!-- -------------------------------------------------------- -->
+Extra small	xs		< 600px
+Small	sm		600px > < 960px
+Medium	md		960px > < 1264px*
+Large	lg		1264px > < 1904px*
+Extra large	xl	4k and ultra-wide	> 1904px*
+
+<template><v-card :height="height">  </v-card></template>
+<script>
+  export default {
+    computed: {
+      height () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return 220
+          case 'sm': return 400
+          case 'md': return 500
+          case 'lg': return 600
+          case 'xl': return 800
+        }
+      },
+    },
+  }
+</script>
+<!-- ---------------------------------------------------------------- -->
+
+
+
+
+
+
+
+lang="pug">
+style="cursor: pointer"
+class="hidden-sm-and-down"
+v-layout(row)
+v-flex(v-for='i in 2' :key='`6${i}`' xs6 )
+
+
+v-app
+v-container
+v-row
+v-col( cols="4")
+v-col( cols="12") --разделитель строк
+router-view
+router-link(text  v-for="( menuItem, i)  in menuItems"  :key="i":to="menuItem.route") 
+
+v-app-bar( color="deep-purple accent-4" dark)
+
+
+v-toolbar
+v-toolbar-title(v-text="'Learn  German'")
+v-toolbar-items(class="hidden-sm-and-down")  --пункты навигации. скрываются sm
+
+
+v-btn(large text) Пункт1 --прозрачная
+v-app-bar-nav-icon   ---burger
+v-icon
+i.mdi.mdi-water-off 
+v-navigation-drawer(absolute  temporary v-model: "drawer" ) --выезжающий сайтбар
+
+v-list
+v-list-group
+v-list-item
+v-list-item-action
+v-list-item-action-text
+v-list-item-avatar
+v-list-item-content
+v-list-item-group
+v-list-item-icon
+v-list-item-subtitle
+v-list-item-title
+
+v-card(dark color='light-blue accent-2')
+v-card-title
+v-card-text.px-0 1/2
+
+
+v-spacer
+v-layout(row wrap)
+v-hover
+v-img(:src="photo.url") 
+v-text-field(prepend-icon='mdi-account' name='login' label='Email' type='email' required)    ----инпут
+v-text-field#password(prepend-icon='mdi-lock' name='password' label='Пароль' type='password'  required)            
+v-file-input          ------поиск файла в компе
+v-dialog              ---------модалка
+
+
+
+
+
+
+
+---опции ---
+elevation="8"
+dark
+dense
+
+---цвета---
+teal accent-4
+light-blue accent-2
+orange darken-3
+amber accent-4
+green accent-2
+indigo lighten-1
+red  accent-3
+
+---иконки---
+mdi-heart
+mdi-magnify
+mdi-dots-vertical
+mdi-codepen
+mdi-lock
+mdi-account
+mdi-home
+mdi-arrange-send-backward
+mdi-library
+mdi-account-box-outline
+mdi-logout
+mdi-login
+mdi-firework
+mdi-school
+mdi-shield-lock-outline
+mdi-cloud-alert
+

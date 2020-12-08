@@ -1,34 +1,24 @@
 <template lang="pug">
+v-container
+  v-row.pug-example.no-gutters
+    v-col(cols="12")
+      p(v-if="visibleFirstBlock"  style="color: perple") First block
+      p(v-else  style="color: red") Second block
 
+    v-card( color="red accent-1"  cols="4")
+      v-card-title( style="text-align:center"  ) title
+      v-card-text  text
+      v-img(src="../assets/t7.png", alt= "img"  max-height="150"  max-width="250")
+    v-col( cols="12") 
+    v-col.my-3( cols="6" outline
+      :class="{'first-block': visibleFirstBlock, 'second-block': !visibleFirstBlock }"
+        ) Info block <b>{{ massage }}</b>
 
-v-row.pug-example.no-gutters
-  div
-      p(v-if="visibleFirstBlock") First block
-      p(v-else) Second block
-  
-  v-card.justify-center
-    v-card-title title
-    v-card-text  text
-    v-img(
-      src="../assets/t7.png", alt= "img"
-      max-height="150"
-      max-width="250"
-      )
-  div(
-    :class="{'first-block': visibleFirstBlock, 'second-block': !visibleFirstBlock}"
-    outline
-      ) Info block <b>{{ value }}</b>
-  
-  div(
-    v-for="(item, index) in items", 
-    :key="item.key"
-    ) {{ item.name }}
-  
-  v-btn
-    a(
-      @click="inverseVisibility", 
-      href="#"
-      ) переключите блоки
+    v-col( cols="12")
+      h1(v-for="(item, index) in items" :key="index") {{ item.key+': '+item.name }}
+    
+    v-col( cols="12")
+      v-btn.pa-4(  color="green accent-3"  @click="inverseVisibility") переключите блоки
 
 
 
@@ -42,11 +32,11 @@ export default {
   data() {
     return {
       visibleFirstBlock: true,
-      value: "Some synamic attribute",
+      massage: "Some synamic attribute",
       items: [
-        { name: "Vue", key: "vue" },
-        { name: "Nuxt", key: "nuxt" },
-        { name: "Pug", key: "pug" },
+        { name: "Vue", key: "1" },
+        { name: "Nuxt", key: "2" },
+        { name: "Pug", key: "3" },
       ],
     };
   },
@@ -62,9 +52,9 @@ export default {
 <style scoped>
 
 .first-block {
-  background: green;
+  background: aqua;
 }
 .second-block {
-  background: silver;
+  background: purple;
 }
 </style>

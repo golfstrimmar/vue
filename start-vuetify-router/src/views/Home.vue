@@ -1,7 +1,8 @@
-<template>
-  <div class="home">
-   <h1>home</h1> 
-  </div>
+<template lang="pug">
+ 
+v-container
+  h1 Home
+ 
 </template>
 
 <script>

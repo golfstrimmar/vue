@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home'
 import About from "../views/About";
 import MainPage from "../views/MainPage";
-import PhotosPage from "../views/PhotosPage";
+import Greed from "../views/Greed";
 
 Vue.use(VueRouter)
 
@@ -24,9 +24,9 @@ const routes = [
     component: MainPage,
   },
   {
-    path: "/PhotosPage",
-    name: "PhotosPage",
-    component: PhotosPage,
+    path: "/Greed",
+    name: "Greed",
+    component: Greed,
   },
 ];
 

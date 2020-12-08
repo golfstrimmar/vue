@@ -1,9 +1,7 @@
 <template lang="pug">
-v-container
-  v-footer(
-    fixed app  
-    )
-    span Название сайта &copy;  2020
+v-container  
+  v-footer(fixed app  color="light-blue accent-2" )
+    span START &copy;  2020
 </template>
 
 <script>

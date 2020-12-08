@@ -18,7 +18,6 @@
 <router-link to="/PhotosPage">
 <v-btn  outlined class="ml-3">PhotosPage</v-btn>
 </router-link>
-
       </v-app-bar>
  </v-container>
 </template>

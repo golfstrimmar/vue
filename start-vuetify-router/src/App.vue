@@ -1,21 +1,23 @@
-<template>
-<!-- здесь  vuetify router vuex axios  
+<template lang="pug">
+<!-- здесь  vuetify router vuex axios  -->
 
--->
-  <v-app>
-  <Navbar></Navbar>
-  <router-view></router-view>
-  </v-app>
+v-app
+  Navbar
+  router-view
+  Footer
+
 </template>
 
 <script>
 import Navbar from './components/navbar';
+import Footer from './components/footer';
 
 export default {
   name: 'App',
 
   components: {
     Navbar,
+    Footer
   },
 
   data: () => ({

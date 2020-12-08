@@ -1,0 +1,383 @@
+---классы---
+.d-{breakpoint}-{value} for sm, md, lg and xl
+The value property is one of:
+none
+inline
+inline-block
+block
+table
+table-cell
+table-row
+flex
+inline-flex
+
+Hidden on all	        .d-none
+Hidden only on xs	    .d-none .d-sm-flex
+Hidden only on sm	    .d-sm-none .d-md-flex
+Hidden only on md	    .d-md-none .d-lg-flex
+Hidden only on lg	    .d-lg-none .d-xl-flex
+Hidden only on xl	    .d-xl-none
+Visible on all	      .d-flex
+Visible only on xs	  .d-flex .d-sm-none
+Visible only on sm	  .d-none .d-sm-flex .d-md-none
+Visible only on md	  .d-none .d-md-flex .d-lg-none
+Visible only on lg	  .d-none .d-lg-flex .d-xl-none
+Visible only on xl	  .d-none .d-xl-flex
+
+.d-flex
+.d-inline-flex
+.d-sm-flex
+.d-sm-inline-flex
+.d-md-flex
+.d-md-inline-flex
+.d-lg-flex
+.d-lg-inline-flex
+.d-xl-flex
+.d-xl-inline-flex
+
+.flex-row
+.flex-row-reverse
+.flex-column
+.flex-column-reverse
+.flex-sm-row
+.flex-sm-row-reverse
+.flex-sm-column
+.flex-sm-column-reverse
+.flex-md-row
+.flex-md-row-reverse
+.flex-md-column
+.flex-md-column-reverse
+.flex-lg-row
+.flex-lg-row-reverse
+.flex-lg-column
+.flex-lg-column-reverse
+.flex-xl-row
+.flex-xl-row-reverse
+.flex-xl-column
+.flex-xl-column-reverse
+
+.flex-sm-nowrap
+.flex-sm-wrap
+.flex-sm-wrap-reverse
+.flex-md-nowrap
+.flex-md-wrap
+.flex-md-wrap-reverse
+.flex-lg-nowrap
+.flex-lg-wrap
+.flex-lg-wrap-reverse
+.flex-xl-nowrap
+.flex-xl-wrap
+.flex-xl-wrap-reverse
+
+
+
+
+.justify-start
+.justify-end
+.justify-center
+.justify-space-between
+.justify-space-around
+.justify-sm-start
+.justify-sm-end
+.justify-sm-center
+.justify-sm-space-between
+.justify-sm-space-around
+.justify-md-start
+.justify-md-end
+.justify-md-center
+.justify-md-space-between
+.justify-md-space-around
+.justify-lg-start
+.justify-lg-end
+.justify-lg-center
+.justify-lg-space-between
+.justify-lg-space-around
+.justify-xl-start
+.justify-xl-end
+.justify-xl-center
+.justify-xl-space-between
+.justify-xl-space-around
+
+.align-start
+.align-end
+.align-center
+.align-baseline
+.align-stretch
+.align-sm-start
+.align-sm-end
+.align-sm-center
+.align-sm-baseline
+.align-sm-stretch
+.align-md-start
+.align-md-end
+.align-md-center
+.align-md-baseline
+.align-md-stretch
+.align-lg-start
+.align-lg-end
+.align-lg-center
+.align-lg-baseline
+.align-lg-stretch
+.align-xl-start
+.align-xl-end
+.align-xl-center
+.align-xl-baseline
+.align-xl-stretch
+
+.align-self-start
+.align-self-end
+.align-self-center
+.align-self-baseline
+.align-self-auto
+.align-self-stretch
+.align-self-sm-start
+.align-self-sm-end
+.align-self-sm-center
+.align-self-sm-baseline
+.align-self-sm-auto
+.align-self-sm-stretch
+.align-self-md-start
+.align-self-md-end
+.align-self-md-center
+.align-self-md-baseline
+.align-self-md-auto
+.align-self-md-stretch
+.align-self-lg-start
+.align-self-lg-end
+.align-self-lg-center
+.align-self-lg-baseline
+.align-self-lg-auto
+.align-self-lg-stretch
+.align-self-xl-start
+.align-self-xl-end
+.align-self-xl-center
+.align-self-xl-baseline
+.align-self-xl-auto
+.align-self-xl-stretch
+
+.mr-auto
+.ml-auto
+
+
+.order-first
+.order-0
+.order-1
+.order-2
+.order-3
+.order-4
+.order-5
+.order-6
+.order-7
+.order-8
+.order-9
+.order-10
+.order-11
+.order-12
+.order-last
+.order-sm-first
+.order-sm-0
+.order-sm-1
+.order-sm-2
+.order-sm-3
+.order-sm-4
+.order-sm-5
+.order-sm-6
+.order-sm-7
+.order-sm-8
+.order-sm-9
+.order-sm-10
+.order-sm-11
+.order-sm-12
+.order-sm-last
+.order-md-first
+.order-md-0
+.order-md-1
+.order-md-2
+.order-md-3
+.order-md-4
+.order-md-5
+.order-md-6
+.order-md-7
+.order-md-8
+.order-md-9
+.order-md-10
+.order-md-11
+.order-md-12
+.order-md-last
+.order-lg-first
+.order-lg-0
+.order-lg-1
+.order-lg-2
+.order-lg-3
+.order-lg-4
+.order-lg-5
+.order-lg-6
+.order-lg-7
+.order-lg-8
+.order-lg-9
+.order-lg-10
+.order-lg-11
+.order-lg-12
+.order-lg-last
+.order-lg-first
+.order-xl-0
+.order-xl-1
+.order-xl-2
+.order-xl-3
+.order-xl-4
+.order-xl-5
+.order-xl-6
+.order-xl-7
+.order-xl-8
+.order-xl-9
+.order-xl-10
+.order-xl-11
+.order-xl-12
+.order-xl-last
+
+align-content-start
+align-content-end
+align-content-center
+align-content-space-between
+align-content-space-around
+align-content-stretch
+align-sm-content-start
+align-sm-content-end
+align-sm-content-center
+align-sm-content-space-between
+align-sm-content-space-around
+align-sm-content-stretch
+align-md-content-start
+align-md-content-end
+align-md-content-center
+align-md-content-space-between
+align-md-content-space-around
+align-md-content-stretch
+align-lg-content-start
+align-lg-content-end
+align-lg-content-center
+align-lg-content-space-between
+align-lg-content-space-around
+align-lg-content-stretch
+align-xl-content-start
+align-xl-content-end
+align-xl-content-center
+align-xl-content-space-between
+align-xl-content-space-around
+align-xl-content-stretch
+
+
+flex-grow-0
+flex-grow-1
+flex-shrink-0
+flex-shrink-1
+
+flex-sm-grow-0
+flex-md-grow-0
+flex-lg-grow-0
+flex-xl-grow-0
+flex-sm-grow-1
+flex-md-grow-1
+flex-lg-grow-1
+flex-xl-grow-1
+flex-sm-shrink-0
+flex-md-shrink-0
+flex-lg-shrink-0
+flex-xl-shrink-0
+flex-sm-shrink-1
+flex-md-shrink-1
+flex-lg-shrink-1
+flex-xl-shrink-1
+
+.float-left
+.float-right
+.float-none
+.float-sm-left
+.float-sm-right
+.float-sm-none
+.float-md-left
+.float-md-right
+.float-md-none
+.float-lg-left
+.float-lg-right
+.float-lg-none
+.float-xl-left
+.float-xl-right
+.float-xl-none
+
+m - applies margin
+p - applies padding
+The direction designates the side the property applies to:
+
+t - applies the spacing for margin-top and padding-top
+b - applies the spacing for margin-bottom and padding-bottom
+l - applies the spacing for margin-left and padding-left
+r - applies the spacing for margin-right and padding-right
+s - applies the spacing for margin-left/padding-left (in LTR mode) and margin-right/padding-right (in RTL mode)
+e - applies the spacing for margin-right/padding-right (in LTR mode) and margin-left/padding-left (in RTL mode)
+x - applies the spacing for both *-left and *-right
+y - applies the spacing for both *-top and *-bottom
+a - applies the spacing for the property in all directions
+
+
+
+0 - eliminates all margin or padding by setting it to 0
+1 - sets margin or padding to 4px
+2 - sets margin or padding to 8px
+3 - sets margin or padding to 12px
+4 - sets margin or padding to 16px
+5 - sets margin or padding to 20px
+6 - sets margin or padding to 24px
+7 - sets margin or padding to 28px
+8 - sets margin or padding to 32px
+9 - sets margin or padding to 36px
+10 - sets margin or padding to 40px
+11 - sets margin or padding to 44px
+12 - sets margin or padding to 48px
+13 - sets margin or padding to 52px
+14 - sets margin or padding to 56px
+15 - sets margin or padding to 60px
+16 - sets margin or padding to 64px
+n1 - sets margin to -4px
+n2 - sets margin to -8px
+n3 - sets margin to -12px
+n4 - sets margin to -16px
+n5 - sets margin to -20px
+n6 - sets margin to -24px
+n7 - sets margin to -28px
+n8 - sets margin to -32px
+n9 - sets margin to -36px
+n10 - sets margin to -40px
+n11 - sets margin to -44px
+n12 - sets margin to -48px
+n13 - sets margin to -52px
+n14 - sets margin to -56px
+n15 - sets margin to -60px
+n16 - sets margin to -64px
+auto - sets the spacing to auto
+
+
+.text-left
+.text-center
+.text-right
+.text-sm-left
+.text-md-left
+.text-lg-left
+.text-xl-left
+
+.text-decoration-none 
+.text-decoration-overline
+.text-decoration-underline
+.text-decoration-line-through
+
+text--primary
+text--secondary
+text--disabled
+
+text-lowercase
+text-uppercase
+text-capitalize
+
+text-no-wrap secondary
+
+text-truncate
