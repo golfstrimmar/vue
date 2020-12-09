@@ -6,7 +6,7 @@ v-container(fluid='' fill-height='')
         v-toolbar(dark='' color='primary')
           v-toolbar-title Регистрация
           v-spacer
-        v-alert(dense border='left' type='warning' :value ="error") {{error}}
+        v-alert(dense border='left' type='warning' :value = "value") {{error}}
         v-card-text
           v-form
             v-text-field(prepend-icon='mdi-account' name='login' label='Email' type='email' required v-model="email")
@@ -22,10 +22,12 @@ export default {
     drawer: null,
     email: null,
     password: null,
+    
   }),
   computed: {
     error() {
       return this.$store.getters.getError;
+      
     },
     processing() {
       return this.$store.getters.getProcessing;
@@ -33,6 +35,13 @@ export default {
     isUserAutheticated() {
       return this.$store.getters.isAuthenticated;
     },
+    value(){
+      if(this.$store.getters.getError){
+        return this.value = true
+      }else{
+        return this.value = false
+      }
+    }
   },
   watch: {
     isUserAutheticated(val){
