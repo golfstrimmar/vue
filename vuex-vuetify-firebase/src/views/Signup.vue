@@ -1,40 +1,62 @@
 <template lang="pug">
 v-container(fluid='' fill-height='')
   v-layout(align-center='' justify-center='')
-    v-flex(xs12='' sm8='' md4='')
+    v-flex(xs12='' sm8='' md6='')
       v-card.elevation-8
         v-toolbar(dark='' color='primary')
           v-toolbar-title Регистрация
           v-spacer
-          v-tooltip(right='')
-            template(v-slot:activator='{ on }')
-              v-btn(icon='' large='' href='https://codepen.io/johnjleider/pen/wyYVVj' target='_blank' v-on='on')
-                v-icon(large='') mdi-codepen
-            span Codepen
+        v-alert(dense border='left' type='warning' :value ="error") {{error}}
         v-card-text
           v-form
-            v-text-field(prepend-icon='mdi-account' name='login' label='Email' type='email' required )
-            v-text-field#password(prepend-icon='mdi-lock' name='password' label='Пароль' type='password'  required)
+            v-text-field(prepend-icon='mdi-account' name='login' label='Email' type='email' required v-model="email")
+            v-text-field#password(prepend-icon='mdi-lock' name='password' label='Пароль' type='password'  required v-model="password")
         v-card-actions
           v-spacer
-          v-btn(color='primary') Зарегестрироваться
+          v-btn(color='primary' @click.prevent="signup" :disabled="processing") Зарегестрироваться
 </template>
 
 <script>
-  export default {
-    data: () => ({
-      drawer: null,
-      email: "",
-      password: ""
-    }),
-    props: {
-      source: String
+export default {
+  data: () => ({
+    drawer: null,
+    email: null,
+    password: null,
+  }),
+  computed: {
+    error() {
+      return this.$store.getters.getError;
+    },
+    processing() {
+      return this.$store.getters.getProcessing;
+    },
+    isUserAutheticated() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
+  watch: {
+    isUserAutheticated(val){
+      if (val === true) {
+      this.$router.push("/")
+      }
     }
-  }
+  },
+  props: {
+    source: String,
+  },
+  methods: {
+    signup() {
+      this.$store.dispatch("SIGNEUP", {
+        email: this.email,
+        password: this.password,
+      });
+    },
+  },
+};
 </script>
 
-<style >
-.v-btn{
-  padding: 13px!important;	
+<style>
+.v-btn {
+  padding: 13px !important;
 }
 </style>
