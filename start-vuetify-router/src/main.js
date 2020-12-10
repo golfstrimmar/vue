@@ -5,8 +5,8 @@ import router from './router'
 import axios from "axios";
 import Vuex from "vuex";
 
-import "./assets/ress.min.css"
-import "./assets/reset.scss"
+// import "./assets/ress.min.css"
+// import "./assets/reset.scss"
 import "./assets/null.scss"
 
 
