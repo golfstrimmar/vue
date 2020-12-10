@@ -45,6 +45,9 @@ import Navbar from "@/components/navbar"<!-- @--отсчет от папки src
 ,methods:{},
 this.$emit('visibleChange', false)
 props:['photo'],
+одинаково включает класс completed если условие task.completed === true
+:class="{completed:task.completed}"
+:class="[task.completed ? 'completed' : '']"
 
 ++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++++++++++++++++++++++++
@@ -52,40 +55,9 @@ props:['photo'],
 ++++++++++++++++++++++++++++++++++++++++++++++
 
 
-======================== иконки bootstrap
-<b-icon  :icon = "icon"> </b-icon> 
- data() {
-    return {
-  icon:"command"
-      }
-    },
-
-
-
-  =====================================
-<Form></Form>
-
-import Form from '@/components/form'
-
- components: {
-    Form
-  }
-
-========= поле data
-data(){
-    const data ={}
-    <!-- внутри прописываются непосредственно пременные и константы -->
-        return data
-  }		
-=====================================
-
-<li v-for="item in list" :key="item">
-        {{ item.content }}
-</li>	
 
 
 =====================================
-
 <!-- -----выведет поле текст и поле id  из data------------ -->
 <template>
   <div>
@@ -104,7 +76,6 @@ data(){
     }
   }
 </script>
-
 =============transition===================
 переключает появление по кнопке тега p
 здесь 
@@ -343,6 +314,18 @@ variant="primary"
         ]
       }
     }     
+
+======================== иконки bootstrap
+<b-icon  :icon = "icon"> </b-icon> 
+ data() {
+    return {
+  icon:"command"
+      }
+    },
+   return data
+  }		
+
+
 
 =============== цвета
 var(--primary);

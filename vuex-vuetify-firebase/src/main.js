@@ -4,15 +4,36 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import axios from "axios";
 import Vuex from "vuex";
+import store from "./store"
+
+
+
 import firebase from "firebase";
 import firebaseConfig from "./config/firebase";
-import store from "./store"
+import user from "./store/user";
+import "firebase/auth";
+import "firebase/database";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 import "./assets/ress.min.css"
 import "./assets/reset.scss"
 // import "./assets/null.scss"
-import "firebase/auth";
-import "firebase/database";
+
 
 
 Vue.prototype.axios = axios;
@@ -34,7 +55,7 @@ firebase.initializeApp(firebaseConfig);
       new Vue({
   vuetify,
   router,
-store,
+store,user,
   render: h => h(App)
 }).$mount('#app')
     // }

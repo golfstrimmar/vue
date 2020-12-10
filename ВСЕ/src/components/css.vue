@@ -1,3 +1,11 @@
+одинаково включает класс completed если условие task.completed === true
+:class="{completed:task.completed}"
+:class="[task.completed ? 'completed' : '']"
+
+
+
+
+--------------------------------------------
 <template>
   <div class="container">
 

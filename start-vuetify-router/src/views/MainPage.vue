@@ -4,9 +4,7 @@ h1 main page
 
 <script>
   export default {
-     data: () => ({
-    
-    }),
+  data: () => ({  }),  components: {    },  mounted() {     },  methods: {      },  computed:{      }
   
   }
 </script>

@@ -1,11 +1,44 @@
 
-<!-- асинхронный запро на сервер с фейковым api  -->
- mounted() {
-  this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
-  .then(response => this.photos = response.data)
+============= есть инпут. есть массив карточек.
+ при добавлении информации в инпут и по клику на enter-- 
+ добавляется следующая карточка с информацией из инпута.
+
+v-col.mx-auto( cols="8")
+<!-- пушим новый пункт по клику на enter -->
+  v-text-field(v-model="taskTitle"  @keyup.enter="NewTask()")
+<!-- карточка вывода информации из инпута -->
+  v-card( v-for="( task, index)  in tasks"  :key="index")
+    h3.mt-3 {{task.title}}
+
+export default {
+   data: () => ({
+    taskTitle: "",
+<!-- id первый уже занят -->
+    taskId: 2,
+<!-- это массив тасков. пока еще состоит из одного пункта -->
+    tasks: [
+      {
+        id: 1,
+        title: "Заголовок 1",
+      }
+    ],
+  }),
+
+  methods: {
+    NewTask(){
+<!-- проверка есть ли информация в инпуте -->
+      if (this.taskTitle === '') {return}
+<!-- пушим новый пункт по клику на enter       -->
+      this.tasks.push({
+        id: this.taskId,
+        title: this.taskTitle,
+      })
+<!-- сбрасываем поле , id увеличиваем-->
+      this.taskId += 1
+      this.taskTitle = ''
+    }
   },
-
-
+};
 
 =============  вывести в цикле карточки 
 <b-card
@@ -95,9 +128,6 @@ this.$emit('btnClicked')
  <v-header
     :isDropdownVisible="isDropdownVisible"
     />
-
-
-
 data(){
   return{
     isDropdownVisible: false
@@ -151,4 +181,8 @@ props:{
     }
 
 
-
+--------------- асинхронный запро на сервер с фейковым api --------------
+ mounted() {
+  this.axios.get('https://jsonplaceholder.typicode.com/photos?_limit=10')
+  .then(response => this.photos = response.data)
+  },
