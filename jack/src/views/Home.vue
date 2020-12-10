@@ -1,7 +1,9 @@
 <template lang="pug">
 v-container
   v-row
-    v-col.mx-auto( cols="8")
+    v-col.mx-auto( cols="8"
+    @keyup.enter="NewTask()"
+    )
       h1 Home
 
       v-text-field(
@@ -9,12 +11,12 @@ v-container
         elevation='8' 
         hide-details='auto'
         v-model="taskTitle"
-        @keyup.enter="NewTask()"
+        
         )
       v-textarea(
         label='Description' 
         v-model="taskDescription"
-        @keyup.enter="NewTask()"
+        
         )
       
       v-radio-group(v-model="whatWatch"  row)
@@ -46,71 +48,158 @@ v-container
                 v-text-field.ml-4(  label='How long is one series? (minutes)' type='number' required v-model="filmMinutes")
               v-col( cols="12")
                 .overline {{ serialTime }}
-      
-      v-chip.my-2(v-if='chip2' close='' color='red' text-color='white' @click:close='chip2 = false' )
-        | Dogs
-      
- 
+        //- Add new
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' 
+              :class="{usedRed: tagMenuShow}"
+              @click="tagMenuShow=!tagMenuShow"
+              ) Add new
+          .d-flex.align-center( v-if="tagMenuShow"  )
+            v-text-field(  label='New Tag' type='text' v-model="tagTitle" @keyup.enter="NewTag")
+            v-btn.ml-4.pa-2(color="primary"  @click="NewTag()") Send
+        //- tags
+      v-list-item
+        v-chip.mr-2(
+          close color='cyan darken-4' text-color='white' 
+          v-for="( tag, index)  in tags"  :key="index"
+          @click="addTagUsed(tag)"
+           :class="{used: tag.use}"
+          ) {{tag.title}} 
+      p {{tagsUsed}}
+      v-chip.my-4(  color='indigo accent-3' text-color='white' label
+        @click="NewTask()"
+        ) 
+        | Оправить новый task
 </template>
 
 <script>
 export default {
   data: () => ({
     row: "",
-    chip2: true,
     taskTitle: "",
     taskDescription: "",
     whatWatch: "Film",
-    taskId: 3,
+    // taskId: 3,
 
     // Total Time
-      // Film
-      filmHours: 1,
-      filmMinutes: 30,
-      // Serial
-      serialSeason: 1,
-      serialSeries: 11,
-      serialSeriesMinutes: 40,
-  
+    // Film
+    filmHours: 1,
+    filmMinutes: 30,
+    // Serial
+    serialSeason: 1,
+    serialSeries: 11,
+    serialSeriesMinutes: 40,
+
+    // Tags
+    tagTitle: "",
+    tagMenuShow: false,
+    tagsUsed: [],
+    // теперь не нужно так как берутся из хранилища см. tags.js
+    // tags: [
+    //   {
+    //     title: "Comedy‎",
+    //     use: false,
+    //   },
+    //   {
+    //     title: "Westerns",
+    //     use: false,
+    //   },
+    //   {
+    //     title: "Adventure",
+    //     use: false,
+    //   },
+    // ],
   }),
   components: {},
   mounted() {},
   methods: {
-     getHoursAndMinutes (minutes) {
-      let hours = Math.trunc(minutes / 60)
-      let min = minutes % 60
-      return hours + ' Hours ' + min + ' Minutes'
+    getHoursAndMinutes(minutes) {
+      let hours = Math.trunc(minutes / 60);
+      let min = minutes % 60;
+      return hours + " Hours " + min + " Minutes";
     },
-    NewTask(){
-      if (this.taskTitle === '') {
-        return
+    NewTask() {
+      if (this.taskTitle === "") {
+        return;
       }
-      this.tasks.push({
-        id: this.taskId,
+
+      let time;
+      if (this.whatWatch === "Film") {
+        time = this.filmTime;
+      } else {
+        time = this.serialTime;
+      }
+
+      const task = {
+        // id: this.taskId,
         title: this.taskTitle,
         description: this.taskDescription,
         whatWatch: this.whatWatch,
+        tags: this.tagsUsed,
+        time: time,
         completed: false,
         editing: false,
-        
-      })
-      // console.log(this.whatWatch)
-      console.log(this.whatWatch)
+      };
+      // отправляем в хранилище данные с этой константы при помощи action 
+      this.$store.dispatch('newTask',task)
+      console.log(task);
       // Reset
-      this.taskId += 1
-      this.taskTitle = ''
-      this.taskDescription = ''
-    }
+      // this.taskId += 1;
+      this.taskTitle = "";
+      this.taskDescription = "";
+      this.tagsUsed = [];
+        for (let i = 0; i < this.tags.length; i++) {
+        this.tags[i].use = false
+      }
+    },
+    addTagUsed(tag) {
+      tag.use = !tag.use;
+      if (tag.use === true ) {
+        this.tagsUsed.push({
+          title: tag.title
+          });
+      } else {
+          this.tagsUsed.find((item, index, arr) => {
+          if (item.title === tag.title) {
+            arr.splice(index, 1);
+          }
+        })
+      }
+    },
+
+    NewTag() {
+      if (this.tagTitle === "") {
+        return;
+      }
+      // this.tags.push({
+      //   title: this.tagTitle,
+      //   used: false,
+      // });
+
+const tag = {
+  title: this.tagTitle,
+  use: false,
+  }
+      this.tagTitle = "";
+      this.tagMenuShow = !this.tagMenuShow;
+      this.$store.dispatch('newTag', tag)
+    },
+
   },
   computed: {
-    filmTime () {
-      let min = (this.filmHours * 60) + (this.filmMinutes * 1)
-      return this.getHoursAndMinutes(min)
+     tags () {
+      return this.$store.getters.tags
     },
-    serialTime () {
-      let min = this.serialSeason * this.serialSeries * this.serialSeriesMinutes
-      return this.getHoursAndMinutes(min)
-    }
+    filmTime() {
+      let min = this.filmHours * 60 + this.filmMinutes * 1;
+      return this.getHoursAndMinutes(min);
+    },
+    serialTime() {
+      let min =
+        this.serialSeason * this.serialSeries * this.serialSeriesMinutes;
+      return this.getHoursAndMinutes(min);
+    },
   },
 };
 </script>
@@ -122,7 +211,41 @@ export default {
 .v-banner__wrapper {
   border: none !important ;
 }
-.v-messages{
+.v-messages {
   display: none;
 }
+// ----------------------------------------
+
+.v-chip.usedRed {
+  background-color: #1DE9B6 !important;
+  transition: all 0.5s ease-in-out;
+  .v-chip__content {
+    color: #ef9a9a;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .mdi:before {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(1045deg);
+    color: #ef9a9a;
+  }
+}
+
+
+.v-chip.used {
+   background-color: #84FFFF !important;
+   transition: all 0.5s ease-in-out;
+  .v-chip__content {
+    color:cyan;
+    transition: all 0.5s ease-in-out;
+  }
+  .mdi:before {
+    transform: rotate(1045deg);
+    color: cyan;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
 </style>
+
+

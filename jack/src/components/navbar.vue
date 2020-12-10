@@ -34,7 +34,7 @@ export default {
         route: "/",
       },
        {
-        title: "Task",
+        title: "Tasks",
         name: "Task",
         route: "/task",
       },

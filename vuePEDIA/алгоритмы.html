@@ -1,3 +1,182 @@
+
+================ ДОБАВЛЕНИЕ-УДАЛЕНИЕ КОНКРЕТНОГО ЭЛЕМЕНТА В МАССИВ
+
+есть массив  tags: [
+      {
+        title: "Comedy‎",
+        use: false,
+      },
+      {
+        title: "Westerns",
+        use: false,
+      },
+      {
+        title: "Adventure",
+        use: false,
+      },
+    ],
+в него нужно по клику 
+добавить кликуемый элемент если его нет в массиве 
+или удалить именно кликуемый элемент
+
+1--верстка на старте
+      
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' ) Add new
+          .d-flex.align-center
+            v-text-field(  label='New Tag' type='text'  )
+            v-btn.ml-4.pa-2(color="primary" ) Send
+
+      v-list-item
+        v-chip.mr-2(close color='cyan darken-4' text-color='white' ) сейчас нет названия  и один чип
+
+2---добавляем чипы согласно массиву
+
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' ) Add new
+          .d-flex.align-center
+            v-text-field(  label='New Tag' type='text'  )
+            v-btn.ml-4.pa-2(color="primary" ) Send
+
+      v-list-item
+        v-chip.mr-2(
+          close color='cyan darken-4' text-color='white'
+          v-for="( tag, index)  in tags"  :key="index"
+          ) {{tag.title}}
+
+3----добавляем обработчик по клику @click="NewTag()" или по событию нажаттия enter @keyup.enter="NewTag"  --- по клику добавится новый чип с заголовком из инпута
+
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' ) Add new
+          .d-flex.align-center
+            v-text-field(  label='New Tag' type='text' @keyup.enter="NewTag" )
+            v-btn.ml-4.pa-2(color="primary" @click="NewTag()") Send
+
+      v-list-item
+        v-chip.mr-2(
+          close color='cyan darken-4' text-color='white'
+          v-for="( tag, index)  in tags"  :key="index"
+          ) {{tag.title}}
+
+4---- теперь по клику уже по отдельным чипам во вспомогательный массив tagsUsed (который изначально пустой tagsUsed: []), добавляются какие-то элементы. или убавляются если они уже есть. этим занимается  addTagUsed(tag)
+
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' ) Add new
+          .d-flex.align-center(  )
+            v-text-field(  label='New Tag' type='text' v-model="tagTitle" @keyup.enter="NewTag")
+            v-btn.ml-4.pa-2( color="primary"  @click="NewTag()" ) Send
+
+      v-list-item
+        v-chip.mr-2(
+          close color='cyan darken-4' text-color='white' 
+          v-for="( tag, index)  in tags"  :key="index"
+          @click="addTagUsed(tag)"
+          ) {{tag.title}} 
+
+5 --- скрываем блок с инпутом и кнопкой и показываем только по клику на чип Add new. это делается
+v-if="tagMenuShow"   и   @click="tagMenuShow=!tagMenuShow"
+
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' 
+           @click="tagMenuShow=!tagMenuShow"
+          ) Add new
+          .d-flex.align-center( v-if="tagMenuShow"  )
+            v-text-field(  label='New Tag' type='text' v-model="tagTitle" @keyup.enter="NewTag")
+            v-btn.ml-4.pa-2( color="primary"  @click="NewTag()" ) Send
+
+      v-list-item
+        v-chip.mr-2(
+          close color='cyan darken-4' text-color='white' 
+          v-for="( tag, index)  in tags"  :key="index"
+          @click="addTagUsed(tag)"
+          ) {{tag.title}} 
+
+6--- дальше косметика. по клику добавляем- удаляем трансформации чипов. :class="{used: tag.use}" :class="{usedRed: tagMenuShow}"
+
+       //- Add new
+      v-list-item
+        .flex-column
+          v-chip.my-2( close color='red' text-color='white' 
+           @click="tagMenuShow=!tagMenuShow"
+           :class="{usedRed: tagMenuShow}"
+          ) Add new
+          .d-flex.align-center( v-if="tagMenuShow"  )
+            v-text-field(  label='New Tag' type='text' v-model="tagTitle" @keyup.enter="NewTag")
+            v-btn.ml-4.pa-2( color="primary"  @click="NewTag()" ) Send
+
+        //- tags
+      v-list-item
+        v-chip.mr-2(
+          close color='cyan darken-4' text-color='white' 
+          v-for="( tag, index)  in tags"  :key="index"
+          @click="addTagUsed(tag)"
+          :class="{used: tag.use}"
+          ) {{tag.title}} 
+
+
+<!-- две функции  -->
+NewTag() {
+      if (this.tagTitle === "") {
+        return;
+      }
+      this.tags.push({
+        title: this.tagTitle,
+        used: false,
+      });
+      this.tagTitle = "";
+      this.tagMenuShow = !this.tagMenuShow;
+    },
+
+ addTagUsed(tag) {
+      tag.use = !tag.use;
+      if (tag.use === true ) {
+        <!-- в конец массива пушится новый элемент с заголовком пришедшим из инпута -->
+        this.tagsUsed.push(tag.title);
+      } else {
+        <!-- по заголовку ищется соответсвующий элемент и удаляется 
+        здесь фиьтр выдаст  новый массив без этого элемента-tag.title-->
+          this.tagsUsed.find((item, index , arr) => {
+          if (item === tag.title) {
+            arr.splice(index, 1);
+          }
+        })
+      }
+    },
+
+
+<!-- ----scss косметика-->
+.v-chip.used {
+   background: #1e88e5 !important;
+  .v-chip__content {
+    color:cyan;
+    transition: all 0.5s ease-in-out;
+  }
+  .mdi:before {
+    transform: rotate(1045deg);
+    color: cyan;
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.v-chip.usedRed {
+  background:#FF5722 !important;
+  .v-chip__content {
+    color: #ef9a9a;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .mdi:before {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(1045deg);
+    color: #ef9a9a;
+  }
+
+
 ============= ВЫЧИСЛЕНИЕ КАКИХ-ТО ПАРАМЕТРОВ ПО ДАННЫМ ИЗ ИНПУТОВ
 есть инпуты 
 v-text-field.ml-4(  label='Hours' type='number' required v-model="filmHours")

@@ -1,42 +1,36 @@
 
-https://www.youtube.com/watch?v=zozB9gEEM0U&list=PLu_62Q68DvTqmSjoY-3uPtJAXmT5WWMy1&index=2&ab_channel=LearnProgrammingTogether
+https://www.youtube.com/watch?v=ujVGz0MQYCc&ab_channel=JackCoder
 
 
+делаем папку store  
+туда  store.js 
 
-файл store.js в корне-------------------------
-
-import Vue from 'vue'
-import Vuex from 'vuex'
-
+--store.js
+import Vue from "vue";
+import Vuex from "vuex";
 Vue.use(Vuex);
 
+import task from "./task"
+
 const store = new Vuex.Store({
-  // хранилище
-  state: {
-    isDropDownVisible: false
+  modules:{
+        task
   },
   
-
+  state: {
+  },
 
   mutations: {
-    CHANGE_DROPDOWN: (state) => {
-      state.isDropDownVisible = !state.isDropDownVisible;
-    }
+   
   },
-
 
   actions: {
-    TOGGLE_DROPDOWN({commit}) {
-      commit('CHANGE_DROPDOWN')
-    }
+    
   },
 
-  
   getters: {
-    DROPDOWN_STATE(state) {
-      return state.isDropDownVisible;
-    }
-  }
-})
+   
+  },
+});
 
 export default store;
