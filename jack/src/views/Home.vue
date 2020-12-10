@@ -21,37 +21,76 @@ v-container
         v-radio( label='Film' value='Film' )
         v-radio( label='Serial' value='Serial' )
       
-      //- .d-flex.align-center
-      //-   input(type="radio" id="Film" value='Film' name="choice" v-model="whatWatch")
-      //-   label(for="Film") Film
-      //-   input(type="radio" id="Serial" value='Serial' name="choice" v-model="whatWatch")
-      //-   label(for="Serial") Serial
+                  //-  // TOTAL TIME
+      .total-time
+        v-card.pa-5.my-4(elevation='8')
+          v-list-item(three-line='' v-if="whatWatch === 'Film'")
+            .overline
+              | Total Film Times
+            v-col( cols="1")
+              v-text-field.ml-4(  label='Hours' type='number' required v-model="filmHours")
+            v-col( cols="1")
+              v-text-field.ml-4(  label='Minutes' type='number' required v-model="filmMinutes")
+          v-list-item(three-line='' v-if="whatWatch === 'Serial'")
+            .overline
+              | Total Serial Times
+            v-col( cols="1")
+              v-text-field.ml-4(  label='How many season?' type='number' required v-model="filmHours")
+            v-col( cols="1")
+              v-text-field.ml-4(  label='How many series?' type='number' required v-model="filmMinutes")
+            v-col( cols="4")
+              v-text-field.ml-4(  label='How long is one series? (minutes)' type='number' required v-model="filmMinutes")
       
       
       
-      h3.text(
-        v-if="whatWatch === 'Film'"
-        )
-        |Total film tmes
-      h3.text(v-if="whatWatch === 'Serial'")
-        |Total serial tmes
+        
+      //- .total-time
+      //-   //- // Film Time
+      //-   .total-time__film(
+      //-     v-if="whatWatch === 'Film'"
+      //-     )
+      //-     span Total Film Times
+      //-     span.time-title Hours
+      //-     input.time-input(
+      //-       type="number"
+      //-       v-model="filmHours"
+      //-     )
+      //-     span.time-title Minutes
+      //-     input.time-input(
+      //-       type="number"
+      //-       v-model="filmMinutes"
+      //-     )
+      //-     //- p {{ filmTime }}
+        
+        
+      //-   //- // Serial Time
+      //-   .total-time__serial(
+      //-     v-if="whatWatch === 'Serial'"
+      //-     )
+      //-     span Total Serial Times
+      //-     .ui-tag
+      //-       span.tag-title Dogs
+      //-       span.button-close
+      //-       span.time-title How many season?
+      //-       input.time-input(
+      //-         type="number"
+      //-         v-model="serialSeason"
+      //-       )
+      //-       span.time-title How many series?
+      //-       input.time-input(
+      //-         type="number"
+      //-         v-model="serialSeries"
+      //-       )
+      //-       span.time-title How long is one series? (minutes)
+      //-       input.time-input(
+      //-         type="number"
+      //-         v-model="serialSeriesMinutes"
+      //-       )
+      
+      
       v-chip.my-2(v-if='chip2' close='' color='red' text-color='white' @click:close='chip2 = false' )
         | Dogs
       
-      v-card.pa-5.my-4(elevation='8' 
-       v-for="( task, index)  in tasks"  :key="index"
-       :class="[task.completed ? 'completed' : '']"
-       )
-        v-icon.float-right mdi-close
-        .d-flex.align-center
-          v-chip(label='') {{task.whatWatch}}
-          .text-subtitle-2.ml-3 Total time
-        .d-flex.align-center
-          v-checkbox(  v-model="task.completed")
-          h3.mt-3 {{task.title}}
-        v-banner(  transition='slide-y-transition') {{task.description}}
-         
-         
  
 </template>
 
@@ -64,29 +103,25 @@ export default {
     taskDescription: "",
     whatWatch: "Film",
     taskId: 3,
-    tasks: [
-      {
-        id: 1,
-        title: "GrowthBusters: Hooked on Growth",
-        description:
-          "I directed this documentary challenging the myths linking growth with prosperity and fulfillment. It explores how our beliefs about economic and consumption",
-        whatWatch: "Film",
-        completed: false,
-        editing: false,
-      },
-      {
-        id: 2,
-        title: "Game of thrones",
-        description: "Best serials",
-        whatWatch: "Serial",
-        completed: false,
-        editing: false,
-      },
-    ],
+
+    // Total Time
+      // Film
+      filmHours: 1,
+      filmMinutes: 30,
+      // Serial
+      serialSeason: 1,
+      serialSeries: 11,
+      serialSeriesMinutes: 40,
+  
   }),
   components: {},
   mounted() {},
   methods: {
+     getHoursAndMinutes (minutes) {
+      let hours = Math.trunc(minutes / 60)
+      let min = minutes % 60
+      return hours + ' Hours ' + min + ' Minutes'
+    },
     NewTask(){
       if (this.taskTitle === '') {
         return

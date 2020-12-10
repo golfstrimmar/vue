@@ -33,6 +33,11 @@ export default {
         name: "Home",
         route: "/",
       },
+       {
+        title: "Task",
+        name: "Task",
+        route: "/task",
+      },
       {
         title: "Login",
         name: "Login",

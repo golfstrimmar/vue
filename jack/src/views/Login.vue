@@ -1,6 +1,6 @@
 <template lang="pug">
 v-container
-  v-row.pug-example.no-gutters
+  h1 login
 
 
 
