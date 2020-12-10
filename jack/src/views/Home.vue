@@ -24,69 +24,28 @@ v-container
                   //-  // TOTAL TIME
       .total-time
         v-card.pa-5.my-4(elevation='8')
-          v-list-item(three-line='' v-if="whatWatch === 'Film'")
-            .overline
-              | Total Film Times
-            v-col( cols="1")
-              v-text-field.ml-4(  label='Hours' type='number' required v-model="filmHours")
-            v-col( cols="1")
-              v-text-field.ml-4(  label='Minutes' type='number' required v-model="filmMinutes")
+          v-list-item( v-if="whatWatch === 'Film'")
+            v-row
+              v-col( cols="2")
+                .overline Total Film Times
+              v-col( cols="1")
+                v-text-field.ml-4(  label='Hours' type='number' required v-model="filmHours")
+              v-col( cols="1")
+                v-text-field.ml-4(  label='Minutes' type='number' required v-model="filmMinutes")
+              v-col( cols="12")
+                .overline {{ filmTime }}
           v-list-item(three-line='' v-if="whatWatch === 'Serial'")
-            .overline
-              | Total Serial Times
-            v-col( cols="1")
-              v-text-field.ml-4(  label='How many season?' type='number' required v-model="filmHours")
-            v-col( cols="1")
-              v-text-field.ml-4(  label='How many series?' type='number' required v-model="filmMinutes")
-            v-col( cols="4")
-              v-text-field.ml-4(  label='How long is one series? (minutes)' type='number' required v-model="filmMinutes")
-      
-      
-      
-        
-      //- .total-time
-      //-   //- // Film Time
-      //-   .total-time__film(
-      //-     v-if="whatWatch === 'Film'"
-      //-     )
-      //-     span Total Film Times
-      //-     span.time-title Hours
-      //-     input.time-input(
-      //-       type="number"
-      //-       v-model="filmHours"
-      //-     )
-      //-     span.time-title Minutes
-      //-     input.time-input(
-      //-       type="number"
-      //-       v-model="filmMinutes"
-      //-     )
-      //-     //- p {{ filmTime }}
-        
-        
-      //-   //- // Serial Time
-      //-   .total-time__serial(
-      //-     v-if="whatWatch === 'Serial'"
-      //-     )
-      //-     span Total Serial Times
-      //-     .ui-tag
-      //-       span.tag-title Dogs
-      //-       span.button-close
-      //-       span.time-title How many season?
-      //-       input.time-input(
-      //-         type="number"
-      //-         v-model="serialSeason"
-      //-       )
-      //-       span.time-title How many series?
-      //-       input.time-input(
-      //-         type="number"
-      //-         v-model="serialSeries"
-      //-       )
-      //-       span.time-title How long is one series? (minutes)
-      //-       input.time-input(
-      //-         type="number"
-      //-         v-model="serialSeriesMinutes"
-      //-       )
-      
+            v-row
+              v-col( cols="2")
+                .overline Total Serial Times
+              v-col( cols="1")
+                v-text-field.ml-4(  label='How many season?' type='number' required v-model="filmHours")
+              v-col( cols="1")
+                v-text-field.ml-4(  label='How many series?' type='number' required v-model="filmMinutes")
+              v-col( cols="4")
+                v-text-field.ml-4(  label='How long is one series? (minutes)' type='number' required v-model="filmMinutes")
+              v-col( cols="12")
+                .overline {{ serialTime }}
       
       v-chip.my-2(v-if='chip2' close='' color='red' text-color='white' @click:close='chip2 = false' )
         | Dogs
@@ -143,7 +102,16 @@ export default {
       this.taskDescription = ''
     }
   },
-  computed: {},
+  computed: {
+    filmTime () {
+      let min = (this.filmHours * 60) + (this.filmMinutes * 1)
+      return this.getHoursAndMinutes(min)
+    },
+    serialTime () {
+      let min = this.serialSeason * this.serialSeries * this.serialSeriesMinutes
+      return this.getHoursAndMinutes(min)
+    }
+  },
 };
 </script>
 

@@ -1,5 +1,31 @@
+============= ВЫЧИСЛЕНИЕ КАКИХ-ТО ПАРАМЕТРОВ ПО ДАННЫМ ИЗ ИНПУТОВ
+есть инпуты 
+v-text-field.ml-4(  label='Hours' type='number' required v-model="filmHours")
+v-text-field.ml-4(  label='Minutes' type='number' required v-model="filmMinutes")
+есть конечный результат
+.overline {{ filmTime }}
 
-============= есть инпут. есть массив карточек.
+data: () => ({
+      filmHours: 1,
+      filmMinutes: 30,
+    }),
+ computed: {
+    filmTime () {
+      <!-- вычисляется общее количество минут -->
+      let min = (this.filmHours * 60) + (this.filmMinutes * 1)
+      <!-- при помощи метода выводится строка с информацией hours + ' Hours ' + min + ' Minutes'-->
+      return this.getHoursAndMinutes(min)
+    },
+ methods: {
+     getHoursAndMinutes (minutes) {
+       <!-- берется целая часть от minutes / 60 -->
+      let hours = Math.trunc(minutes / 60)
+      let min = minutes % 60
+      return hours + ' Hours ' + min + ' Minutes'
+    },
+  },
+
+============= ЕСТЬ ИНПУТ И МАССИВ КАРТОЧЕК
  при добавлении информации в инпут и по клику на enter-- 
  добавляется следующая карточка с информацией из инпута.
 
@@ -40,7 +66,7 @@ export default {
   },
 };
 
-=============  вывести в цикле карточки 
+=============  ВЫВЕСТИ В ЦИКЛЕ КАРТОЧКИ 
 <b-card
      :title="card.title"
      img-alt="Image" 
