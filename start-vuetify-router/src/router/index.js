@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home'
-import About from "../views/About";
+import Cards from "../views/Cards";
 import MainPage from "../views/MainPage";
 import Greed from "../views/Greed";
 
@@ -14,9 +14,9 @@ const routes = [
     component: Home,
   },
   {
-    path: "/About",
-    name: "About",
-    component: About,
+    path: "/Cards",
+    name: "Cards",
+    component: Cards,
   },
   {
     path: "/MainPage",

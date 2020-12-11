@@ -3,14 +3,15 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify';
 import router from './router'
 import axios from "axios";
-import Vuex from "vuex";
+
 
 // import "./assets/ress.min.css"
 // import "./assets/reset.scss"
 import "./assets/null.scss"
 
 
-
+// vuex;
+import store from "@/store/store";
 
 
 
@@ -22,5 +23,6 @@ Vue.config.productionTip = false
 new Vue({
   vuetify,
   router,
-  render: h => h(App)
-}).$mount('#app')
+  store,
+  render: (h) => h(App),
+}).$mount("#app");

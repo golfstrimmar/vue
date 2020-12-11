@@ -33,8 +33,8 @@ export default {
         route: "/",
       },
       {
-        title: "ADD CARD",
-        route: "/about",
+        title: "Cards",
+        route: "/Cards",
       },
       {
         title: "MainPage",

@@ -56,8 +56,23 @@ v-toolbar
 v-toolbar-title(v-text="'Learn  German'")
 v-toolbar-items(class="hidden-sm-and-down")  --пункты навигации. скрываются sm
 
+<!-- v-chip--v-chip--v-chip--v-chip--v-chip--v-chip--v-chip--v-chip-- -->
+      v-chip.ma-2(color='indigo accent-3' text-color='white' label) 
+        v-icon(left='')
+          | mdi-wrench
+        | Добавить карточку 
+<!-- v-chip--v-chip--v-chip--v-chip--v-chip--v-chip--v-chip--v-chip-- -->
+
+
+<!-- --v-btn----v-btn------v-btn----v-btn----v-btn-- -->
+v-btn( dark='' color='indigo')
+  v-icon(left)  mdi-wrench
+  | Добавить карточку
 
 v-btn(large text) Пункт1 --прозрачная
+<!-- --v-btn------v-btn----v-btn----v-btn----v-btn-- -->
+
+
 v-app-bar-nav-icon   ---burger
 v-icon mdi-close
 i.mdi.mdi-water-off 
