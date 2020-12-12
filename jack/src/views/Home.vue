@@ -74,6 +74,7 @@ v-container
 </template>
 
 <script>
+
 export default {
   data: () => ({
     row: "",
@@ -141,30 +142,30 @@ export default {
         completed: false,
         editing: false,
       };
-      // отправляем в хранилище данные с этой константы при помощи action 
-      this.$store.dispatch('newTask',task)
+      // отправляем в хранилище данные с этой константы при помощи action
+      this.$store.dispatch("newTask", task);
       console.log(task);
       // Reset
       // this.taskId += 1;
       this.taskTitle = "";
       this.taskDescription = "";
       this.tagsUsed = [];
-        for (let i = 0; i < this.tags.length; i++) {
-        this.tags[i].use = false
+      for (let i = 0; i < this.tags.length; i++) {
+        this.tags[i].use = false;
       }
     },
     addTagUsed(tag) {
       tag.use = !tag.use;
-      if (tag.use === true ) {
+      if (tag.use === true) {
         this.tagsUsed.push({
-          title: tag.title
-          });
+          title: tag.title,
+        });
       } else {
-          this.tagsUsed.find((item, index, arr) => {
+        this.tagsUsed.find((item, index, arr) => {
           if (item.title === tag.title) {
             arr.splice(index, 1);
           }
-        })
+        });
       }
     },
 
@@ -177,19 +178,18 @@ export default {
       //   used: false,
       // });
 
-const tag = {
-  title: this.tagTitle,
-  use: false,
-  }
+      const tag = {
+        title: this.tagTitle,
+        use: false,
+      };
       this.tagTitle = "";
       this.tagMenuShow = !this.tagMenuShow;
-      this.$store.dispatch('newTag', tag)
+      this.$store.dispatch("newTag", tag);
     },
-
   },
   computed: {
-     tags () {
-      return this.$store.getters.tags
+    tags() {
+      return this.$store.getters.tags;
     },
     filmTime() {
       let min = this.filmHours * 60 + this.filmMinutes * 1;
@@ -202,50 +202,41 @@ const tag = {
     },
   },
 };
+
 </script>
 
-<style lang="scss">
-.text {
-  text-align: left;
-}
-.v-banner__wrapper {
-  border: none !important ;
-}
-.v-messages {
-  display: none;
-}
-// ----------------------------------------
+<style lang="sass" >
+@import "../assets/mixins.sass"
 
-.v-chip.usedRed {
-  background-color: #1DE9B6 !important;
-  transition: all 0.5s ease-in-out;
-  .v-chip__content {
-    color: #ef9a9a;
-    transition: all 0.5s ease-in-out;
-  }
-
-  .mdi:before {
-    transition: all 0.5s ease-in-out;
-    transform: rotate(1045deg);
-    color: #ef9a9a;
-  }
-}
+.text
+  text-align: left
+.v-banner__wrapper
+  border: none !important
+.v-messages
+  display: none
 
 
-.v-chip.used {
-   background-color: #84FFFF !important;
-   transition: all 0.5s ease-in-out;
-  .v-chip__content {
-    color:cyan;
-    transition: all 0.5s ease-in-out;
-  }
-  .mdi:before {
-    transform: rotate(1045deg);
-    color: cyan;
-    transition: all 0.5s ease-in-out;
-  }
-}
-
+.v-chip
+  *
+    transition: all 0.5s ease-in-out
+.v-chip
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.5), 0px 8px 10px 1px rgba(0, 0, 0, 0.2), 0px 3px 14px 2px rgba(0, 0, 0, 0.15) !important
+  &.usedRed
+    @extend %box-shadow
+    background-color: lighten( $color_success, 30% ) !important
+    .v-chip__content
+      color: lighten( $color_success, 10% ) !important
+    .mdi:before
+      transition: all 0.5s ease-in-out
+      transform:  rotate(1045deg)
+      color: lighten( $color_success, 10% )
+  &.used
+    @extend %box-shadow
+    background-color: lighten( $color_cyan, 40% ) !important
+    .v-chip__content
+      color: lighten( $color_cyan, 10% )
+    .mdi:before
+      transition: all 0.5s ease-in-out
+      transform:  rotate(1045deg)
+      color: lighten( $color_cyan, 10% )
 </style>
-
-

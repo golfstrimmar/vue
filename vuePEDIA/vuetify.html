@@ -30,10 +30,6 @@ Extra large	xl	4k and ultra-wide	> 1904px*
 
 
 
-
-
-
-
 lang="pug">
 style="cursor: pointer"
 class="hidden-sm-and-down"
@@ -44,8 +40,7 @@ v-flex(v-for='i in 2' :key='`6${i}`' xs6 )
 v-app
 v-container
 v-row
-v-col( cols="4")
-v-col( cols="12") 
+v-col(cols="12"  sm="6") 
 router-view
 router-link(text  v-for="( menuItem, i)  in menuItems"  :key="i":to="menuItem.route") 
 
@@ -135,5 +130,5 @@ mdi-firework
 mdi-school
 mdi-shield-lock-outline
 mdi-cloud-alert
- mdi-close
+mdi-close
 

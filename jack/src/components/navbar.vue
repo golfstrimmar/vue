@@ -58,11 +58,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
-button {
-  height: 100% !important;
-}
-.v-image{
-width: 40px;height: 40px;
-}
+<style lang="sass">
+button 
+  height: 100% !important
+%box-shadow
+  box-shadow: 0px 5px 14px 4px rgba(0, 0, 0, 0.5), 0px 8px 10px 1px rgba(0, 0, 0, 0.2), 0px 3px 14px 2px rgba(0, 0, 0, 0.15) !important
+
+
 </style>
