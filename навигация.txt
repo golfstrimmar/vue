@@ -1,4 +1,4 @@
----------jack----------
+﻿---------jack----------
 приложение для сортировки фильмов
 https://www.youtube.com/watch?v=shueDQqCkzw&list=PLkCrmfIT6LBSn5sSboXnU8hDLeqYnUcVy&ab_channel=JackCoder  
 
@@ -14,4 +14,7 @@ https://www.youtube.com/watch?v=shueDQqCkzw&list=PLkCrmfIT6LBSn5sSboXnU8hDLeqYnU
     "stylus": "^0.54.8",
 
 ------------Ulbi------------
-справочная инфа
+работа axios  - получение картинок с сайта в виде json с сайта https://jsonplaceholder.typicode.com/photos?_limit=10
+передача данных в дочерний компонент
+получение дополнительной картинки в инпуте из файловой системы компа
+передача метода в родительский компонент и вывод этой картинки в родителе.
