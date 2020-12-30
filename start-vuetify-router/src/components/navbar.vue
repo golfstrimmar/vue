@@ -54,11 +54,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
-button {
-  height: 100% !important;
-}
-.v-image{
-width: 40px;height: 40px;
-}
+<style lang="sass">
+button 
+  height: 100% !important
+
+.v-image
+  width: 40px
+  height: 40px
+
 </style>

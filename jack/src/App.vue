@@ -1,4 +1,11 @@
+
+
+
 <template lang="pug">
+
+//- // https://www.youtube.com/watch?v=shueDQqCkzw&list=PLkCrmfIT6LBSn5sSboXnU8hDLeqYnUcVy&ab_channel=JackCoder 
+
+
 <!-- здесь  vuetify router vuex axios  -->
 
 v-app

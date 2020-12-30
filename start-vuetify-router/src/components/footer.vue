@@ -10,6 +10,6 @@ v-container
   }
 </script>
 
-<style scoped>
+<style scoped lang="sass">
 
 </style>

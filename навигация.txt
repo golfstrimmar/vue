@@ -1,0 +1,17 @@
+---------jack----------
+приложение для сортировки фильмов
+https://www.youtube.com/watch?v=shueDQqCkzw&list=PLkCrmfIT6LBSn5sSboXnU8hDLeqYnUcVy&ab_channel=JackCoder  
+
+    "axios": "^0.21.0",
+    "core-js": "^3.6.5",
+    "pug": "^3.0.0",
+    "vue-axios": "^3.2.0",
+    "vue-router": "^3.2.0",
+    "vuelidate": "^0.7.6",
+    "vuetify": "^2.3.19",
+    "vuex": "^3.6.0"
+    "sass": "^1.19.0",
+    "stylus": "^0.54.8",
+
+------------Ulbi------------
+справочная инфа

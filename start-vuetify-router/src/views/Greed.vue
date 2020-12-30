@@ -67,6 +67,6 @@ v-container(grid-list-md text-xs-center fluid)
   }
 </script>
 
-<style scoped>
+<style lang="sass">
 
 </style>

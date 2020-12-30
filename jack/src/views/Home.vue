@@ -223,20 +223,20 @@ export default {
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.5), 0px 8px 10px 1px rgba(0, 0, 0, 0.2), 0px 3px 14px 2px rgba(0, 0, 0, 0.15) !important
   &.usedRed
     @extend %box-shadow
-    background-color: lighten( $color_success, 30% ) !important
+    // background-color: lighten( $color_success, 30% ) !important
     .v-chip__content
-      color: lighten( $color_success, 10% ) !important
+      // color: lighten( $color_success, 10% ) !important
     .mdi:before
       transition: all 0.5s ease-in-out
       transform:  rotate(1045deg)
-      color: lighten( $color_success, 10% )
+      // color: lighten( $color_success, 10% )
   &.used
-    @extend %box-shadow
-    background-color: lighten( $color_cyan, 40% ) !important
+    // @extend %box-shadow
+    // background-color: lighten( $color_cyan, 40% ) !important
     .v-chip__content
-      color: lighten( $color_cyan, 10% )
+      // color: lighten( $color_cyan, 10% )
     .mdi:before
       transition: all 0.5s ease-in-out
       transform:  rotate(1045deg)
-      color: lighten( $color_cyan, 10% )
+      // color: lighten( $color_cyan, 10% )
 </style>

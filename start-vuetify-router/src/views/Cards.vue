@@ -34,15 +34,15 @@ cards(){
 };
 </script>
 
-<style lang="scss">
-.text {
-  text-align: left;
-}
-.v-banner__wrapper {
-  border: none !important ;
-}
-.v-messages{
-  display: none;
-}
+<style lang="sass">
+.text 
+  text-align: left
+
+.v-banner__wrapper 
+  border: none !important 
+
+.v-messages
+  display: none
+
 
 </style>
