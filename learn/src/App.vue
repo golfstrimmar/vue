@@ -1,44 +1,47 @@
-<template>
-  <div id="app">
-    <Navbar></Navbar>
-   <AppFooter></AppFooter>
-  </div>
+<template lang="pug">
+<!-- здесь  vuetify router vuex axios  -->
+
+v-app
+  Navbar
+  router-view
+
 </template>
 
 <script>
- import Navbar from '@/components/navbar'
- import AppFooter from '@/components/appFooter'
+import Navbar from './components/navbar';
 
 export default {
-    name: 'App',
-  components:{
+  name: 'App',
+
+  components: {
     Navbar,
-    AppFooter
-  }
-}
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 100px;
-}
+<style lang="sass">
+#app 
+  font-family: Avenir, Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #2c3e50
 
-.container{
-  background: Bisque;
-  border-radius: 4px;
-}
 
-*{
-  box-sizing: border-box;
-  list-style: none;
-}
-body{
-  background:WhiteSmoke;
-}
+#nav 
+  padding: 30px
+
+  a 
+    font-weight: bold
+    color: #2c3e50
+
+    &.router-link-exact-active 
+      color: #42b983
+  
+  
 
 </style>

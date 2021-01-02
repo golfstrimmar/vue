@@ -10,21 +10,20 @@
 
 v-app
   Navbar
-  MixinsVariablesSASS
   router-view
   
 </template>
 
 <script>
 import Navbar from '@/components/navbar';
-import MixinsVariablesSASS from '@/components/MixinsVariablesSASS';
+
 
 export default {
   name: 'App',
 
   components: {
-    Navbar,
-    MixinsVariablesSASS
+    Navbar
+   
   },
 
   data: () => ({

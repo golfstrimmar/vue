@@ -12,15 +12,24 @@ flex
 inline-flex
 
 v-spacer   --- сдвигает вправо до упора. аналог margin: 0 0 0 auto
+
+v-container(fluid) --всегда оборачивать компоненты , которые на полный экран
+
 v-app-bar -- хороший app-bar для header 
+  v-app-bar-nav-icon --БУРГЕР
+
+
+
+
 v-card
   v-card-title
   v-card-text
     v-img
 
-v-text-field
-v-file-input
-v-btn
+
+v-text-field ---текстовый input
+v-file-input ----файловый input
+v-btn(depressed='' color='primary') Primary
 
 Photo
 import Photo from '@/components/photo/Photo';
@@ -28,7 +37,6 @@ components: { Photo   },
 
 
 v-dialog(v-model='dialog' persistent='' max-width='600')
-
 
 
 

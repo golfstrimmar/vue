@@ -1,47 +1,28 @@
-
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
+import vuetify from './plugins/vuetify';
 import router from './router'
-import "./assets/css/fonts.css";
+import axios from "axios";
 
 
-
-
-
-// firebase;
-import firebaseConfig from "./config/firebase"
-import firebase from "firebase"
-firebase.initializeApp(firebaseConfig);
-
-
-
-
-
-
-
-// BootstrapVue;
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
-Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-vue/dist/bootstrap-vue.css";
+// import "./assets/ress.min.css"
+// import "./assets/reset.scss"
+import "./assets/null.scss"
 
 
 // vuex;
-Vue.use(Vuex);
-import Vuex from "vuex";
-import store from "./store";
-Vue.use(Vuex);
+import store from "@/store/store";
+
+
+
+Vue.prototype.axios = axios;
 
 Vue.config.productionTip = false
 
+
 new Vue({
-  el: "#app",
+  vuetify,
   router,
   store,
-  components: { App },
-  template: "<App/>"
-  
-});
-
-
+  render: (h) => h(App),
+}).$mount("#app");
