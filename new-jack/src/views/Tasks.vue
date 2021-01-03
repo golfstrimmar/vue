@@ -16,35 +16,20 @@ v-container
             v-card-text.pa-0 Total Time:
             v-checkbox(v-model='task.completed'  color='indigo'  hide-details='')
 </template>
-  
+
 <script>
 export default {
-   data: () => ({ 
-     tasks:[
-    {
-        id: "1", 
-        title:"Halk",
-        discription: "best movie of all time",
-        whatWatch:"Film",
-        completed: false,
-        editing: false
-    
+  mounted() {},
+  methods: {},
+  computed: {
+    tasks() {
+      return this.$store.getters.tasks;
     },
-    {
-        id: "2", 
-        title:"Svaty",
-        discription: "the best TV series ever watched",
-        whatWatch:"Serial",
-        completed: false,
-        editing: false
-    
-    },
-]
-    }),  components: {    },  mounted() {     },  methods: {      },  computed:{      }
-    }
+  },
+};
 </script>
-  
-<style	lang="sass" scoped>
+
+<style lang="sass" scoped>
 .v-icon
   &:hover
     cursor: pointer

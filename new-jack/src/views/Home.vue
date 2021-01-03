@@ -52,6 +52,8 @@ export default {
                     completed: false,
                     editing: false
                }
+            //    отправляем в хранилище новый task
+            this.$store.dispatch("newTask", task)
                console.log(task)
             //    reset
             this.taskId +=1

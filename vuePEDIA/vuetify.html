@@ -51,6 +51,49 @@ components: { Photo   },
 
 v-dialog(v-model='dialog' persistent='' max-width='600')
 
+----------axios----------
+import axios from "axios";
+Vue.prototype.axios = axios;
+ mounted() {
+    this.fetchToDo();
+  },
+  methods: {
+    fetchToDo() {
+      this.axios
+        .get("https://jsonplaceholder.typicode.com/posts?_limit=10")
+        .then((response) => (this.posts = response.data));
+    },
+  },
+------------------------vuex-------------------------
+ this.$store.dispatch("newTask", task)
+  computed: {
+    tasks() {
+      return this.$store.getters.tasks;
+    },
+  },
+-----------
+ mutations: {
+    newTask(state, payload){
+      state.tasks.push(payload);
+    }
+  },
+  actions: {
+    // объект  который принимает свойство commit и второй параметр сам task
+    newTask({ commit }, payload) {
+      commit("newTask", payload);
+    },
+  },
+  getters: {
+    tasks(state) {
+      return state.tasks;
+    },
+  },
+
+
+
+
+
+
 <!-- -------------------------------------------------------- -->
 Extra small	xs		< 600px
 Small	sm		600px > < 960px

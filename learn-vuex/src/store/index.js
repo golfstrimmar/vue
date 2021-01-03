@@ -1,14 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import post from '@/store/modules/post'
 
 Vue.use(Vuex)
 
-
-import task from "./modules/task"
-
 export default new Vuex.Store({
-
   modules: {
-    task
-  }
-})
+    post,
+  },
+});
