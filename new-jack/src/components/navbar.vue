@@ -11,7 +11,7 @@ v-container(fluid)
     
     router-link( to="/" tag="span" style="cursor: pointer")
       v-toolbar-title
-        span.pl-2 START
+        span.pl-2 NEW JACK
     
     v-spacer
     v-toolbar-items(class="hidden-sm-and-down")
@@ -29,6 +29,14 @@ export default {
       {
         title: "Home",
         route: "/",
+      },
+      {
+        title: "Login",
+        route: "/Login",
+      },
+      {
+        title: "Registration",
+        route: "/Registration",
       },
     ],
     drawer:false,

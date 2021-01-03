@@ -1,7 +1,46 @@
 vue add vuetify
 
 
+---классы---
+.d-{breakpoint}-{value} for sm, md, lg and xl
+The value property is one of:
+none
+inline
+inline-block
+block
+table
+table-cell
+table-row
+flex
+inline-flex
 
+v-spacer   --- сдвигает вправо до упора. аналог margin: 0 0 0 auto
+
+v-container(fluid) --всегда оборачивать компоненты , которые на полный экран
+
+v-app-bar -- хороший app-bar для header 
+  v-app-bar-nav-icon --БУРГЕР
+
+v-for="( , index) in " 
+  :key="index"
+
+
+v-card
+  v-card-title
+  v-card-text
+    v-img
+
+
+v-text-field ---текстовый input
+v-file-input ----файловый input
+v-btn(depressed='' color='primary') Primary
+
+Photo
+import Photo from '@/components/photo/Photo';
+components: { Photo   },
+
+
+v-dialog(v-model='dialog' persistent='' max-width='600')
 
 <!-- -------------------------------------------------------- -->
 Extra small	xs		< 600px
@@ -113,22 +152,33 @@ green accent-2
 indigo lighten-1
 red  accent-3
 
----иконки---
-mdi-heart
-mdi-magnify
-mdi-dots-vertical
-mdi-codepen
-mdi-lock
-mdi-account
-mdi-home
-mdi-arrange-send-backward
-mdi-library
-mdi-account-box-outline
-mdi-logout
-mdi-login
-mdi-firework
-mdi-school
-mdi-shield-lock-outline
-mdi-cloud-alert
-mdi-close
+---------------------------------иконки------------------------------------------------------
+!!!!!!!!!!!!!!!!!!иконки искать на сайте  https://materialdesignicons.com/!!!!!!!!!!!!!!!!!
+v-icon( ) mdi-close
 
+<!-- ------------------------------------------------- -->
+.justify-start
+.justify-end
+.justify-center
+.justify-space-between
+.justify-space-around
+.justify-sm-start
+.justify-sm-end
+.justify-sm-center
+.justify-sm-space-between
+.justify-sm-space-around
+.justify-md-start
+.justify-md-end
+.justify-md-center
+.justify-md-space-between
+.justify-md-space-around
+.justify-lg-start
+.justify-lg-end
+.justify-lg-center
+.justify-lg-space-between
+.justify-lg-space-around
+.justify-xl-start
+.justify-xl-end
+.justify-xl-center
+.justify-xl-space-between
+.justify-xl-space-around

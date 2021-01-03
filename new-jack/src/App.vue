@@ -11,14 +11,12 @@ v-app
 
 <script>
 import Navbar from './components/navbar';
-import Footer from './components/footer';
 
 export default {
   name: 'App',
 
   components: {
     Navbar,
-    Footer
   },
 
   data: () => ({
@@ -32,7 +30,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
-  text-align: center
   color: #2c3e50
 
 
