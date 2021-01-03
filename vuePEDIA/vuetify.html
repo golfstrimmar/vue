@@ -33,7 +33,16 @@ v-card
 
 v-text-field ---текстовый input
 v-file-input ----файловый input
+
+v-checkbox(v-model='task.completed'  color='indigo'  hide-details='')
+
+v-radio-group(mandatory)
+  v-radio( label='Film' :value='Film' )
+  v-radio( label='Serial' :value='Serial')
+
+
 v-btn(depressed='' color='primary') Primary
+
 
 Photo
 import Photo from '@/components/photo/Photo';
@@ -143,14 +152,7 @@ elevation="8"
 dark
 dense
 
----цвета---
-teal accent-4
-light-blue accent-2
-orange darken-3
-amber accent-4
-green accent-2
-indigo lighten-1
-red  accent-3
+
 
 ---------------------------------иконки------------------------------------------------------
 !!!!!!!!!!!!!!!!!!иконки искать на сайте  https://materialdesignicons.com/!!!!!!!!!!!!!!!!!
