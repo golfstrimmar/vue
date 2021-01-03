@@ -1,5 +1,6 @@
 <template lang="pug">
 v-container
+    h1.mb-5 Home
     v-text-field(
         label='What will your like to whatch?'
         v-model="taskTitle"
@@ -11,25 +12,19 @@ v-container
         v-model="taskDescription"
         @keyup.enter="newTask"
          )
-    v-radio-group(mandatory)
-        v-radio( label='Film' :value='Film' )
-        v-radio( label='Serial' :value='Serial')
-
-    v-row
-        v-card.mr-5.pa-4(
-            v-for="( task, index) in tasks" 
-            :key="task.id"
-            :class="{completed: task.completed}"
-            dark color='light-blue accent-2'
-            elevation="8" 
+    v-radio-group(mandatory
+        v-model="whatWatch"
         )
-            v-card-text.pa-0.justify-end.d-flex
-                v-icon() mdi-close
-            v-card-title.pa-0 {{task.title}}
-            v-card-text.pa-0 {{task.discription}}
-            v-card-text.pa-0 {{task.whatWatch}}
-            v-card-text.pa-0 Total Time:
-            v-checkbox(v-model='task.completed'  color='indigo'  hide-details='')
+        v-radio( 
+            label='Film'
+            value='Film' 
+            )
+        v-radio(
+             label='Serial' 
+             value='Serial'
+             )
+
+
 </template>
 <script>
 export default {
@@ -37,28 +32,10 @@ export default {
       taskTitle: "",
       taskDescription: "",
       taskId: 3,
-      whatWatch: "film",
+      whatWatch: null,
       alert: true,
-tasks:[
-    {
-        id: "1", 
-        title:"Halk",
-        discription: "best movie of all time",
-        whatWatch:"Film",
-        completed: false,
-        editing: false
-    
-    },
-    {
-        id: "2", 
-        title:"Svaty",
-        discription: "the best TV series ever watched",
-        whatWatch:"Serial",
-        completed: false,
-        editing: false
-    
-    },
-]
+
+
    }), 
     components: {    },
       mounted() {     }, 
@@ -67,7 +44,7 @@ tasks:[
                if(this.taskTitle === ""){
                    return
                }
-               this.tasks.push({
+               const task ={
                     id: this.taskId,
                     title: this.taskTitle,
                     discription: this.taskDescription,
@@ -75,7 +52,7 @@ tasks:[
                     completed: false,
                     editing: false
                }
-               )
+               console.log(task)
             //    reset
             this.taskId +=1
             this.taskTitle=""
@@ -87,8 +64,6 @@ tasks:[
 </script>
   
 <style	lang="sass" >
-.v-icon
-    &:hover
-        cursor: pointer
+
 
 </style>
