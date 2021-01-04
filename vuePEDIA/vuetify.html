@@ -74,7 +74,7 @@ Vue.prototype.axios = axios;
 ------------------------vuex-------------------------
 в главном компоненте
  Task(
-      v-for="(task , index) in $store.getters.getTasks" 
+      v-for="(task , index) in tasks" 
       :key="index"
       :task="task"
     )
@@ -82,6 +82,13 @@ Vue.prototype.axios = axios;
   mounted() {
    this.$store.dispatch("newTask", task)
   },
+
+  computed: {
+   tasks() {
+      return this.$store.getters.getTasks;
+    },
+
+
 
 ----------------------------------taskModule.js
  state: {

@@ -21,7 +21,9 @@ export default{
       const photos = await res.json();
       ctx.commit("updatePhotos", photos);
     },
-  },
+    },
+
+
 
   getters: {
     getPhotos(state) {

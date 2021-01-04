@@ -7,7 +7,7 @@ v-container
     )
   v-row
     Photo(
-      v-for="(photo , index) in $store.getters.getPhotos" 
+      v-for="(photo , index) in photos" 
       :key="index"
       :photo="photo"
       @openPhoto="openPhoto"
@@ -38,20 +38,20 @@ export default {
     //     .then((response) => (this.photos = response.data));
     // },
     //  реализуя функцию добавления картинки из дочернего компонента она оттуда $emit
-    // addPhoto(photo) {
-    //   // в массив фото добавляется еще один объект  который пришёл из дочернего компонента
-    //   this.photos.push(photo);
-    // },
+    addPhoto(photo) {
+      // в массив фото добавляется еще один объект  который пришёл из дочернего компонента
+      this.photos.push(photo);
+    },
     openPhoto(photo){
       this.currentPhoto = photo
       this.dialogVisible = true
     },
     },
-    //  computed: {
-    // photos() {
-    //   return this.$store.getters.getPhotos;
-    // },
-    //   },
+     computed: {
+    photos() {
+      return this.$store.getters.getPhotos;
+    },
+      },
 };
 
 </script>
