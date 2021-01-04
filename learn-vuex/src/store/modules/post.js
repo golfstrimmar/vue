@@ -13,6 +13,8 @@
          "https://jsonplaceholder.typicode.com/posts?_limit=9"
        )
        const posts = await res.json();
+      //--так на файле home мы получали массив постов---  this.posts = posts
+      // теперь массив коммиттися в хранилище мутацией
        ctx.commit("updatePosts", posts);
      },
    },

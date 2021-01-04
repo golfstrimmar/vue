@@ -9,7 +9,8 @@ v-container
             dark color='light-blue accent-2'
             elevation="8" 
         )
-            v-icon.float-right() mdi-close
+            v-icon.float-right(
+                ) mdi-close
             v-card-title.pa-0 {{task.title}}
             v-card-text.pa-0 {{task.discription}}
             v-card-text.pa-0 {{task.whatWatch}}
@@ -19,8 +20,12 @@ v-container
 
 <script>
 export default {
+     data: () => ({ 
+ alert: true,
+      }),
   mounted() {},
-  methods: {},
+  methods: {
+  },
   computed: {
     tasks() {
       return this.$store.getters.tasks;
@@ -29,7 +34,7 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass" >
 .v-icon
   &:hover
     cursor: pointer

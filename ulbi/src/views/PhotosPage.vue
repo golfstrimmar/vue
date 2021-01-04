@@ -32,11 +32,11 @@ export default {
     this.fetchToDo();
   },
   methods: {
-    fetchToDo() {
-      this.axios
-        .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
-        .then((response) => (this.photos = response.data));
-    },
+    // fetchToDo() {
+    //   this.axios
+    //     .get("https://jsonplaceholder.typicode.com/photos?_limit=10")
+    //     .then((response) => (this.photos = response.data));
+    // },
     //  реализуя функцию добавления картинки из дочернего компонента она оттуда $emit
     addPhoto(photo) {
       // в массив фото добавляется еще один объект  который пришёл из дочернего компонента
@@ -45,9 +45,15 @@ export default {
     openPhoto(photo){
       this.currentPhoto = photo
       this.dialogVisible = true
-    }
-  },
+    },
+    },
+     computed: {
+    photos() {
+      return this.$store.getters.photos;
+    },
+      },
 };
+
 </script>
 
 <style lang="sass" scoped></style>
