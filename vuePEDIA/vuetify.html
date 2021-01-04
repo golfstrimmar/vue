@@ -72,30 +72,38 @@ Vue.prototype.axios = axios;
 
   },
 ------------------------vuex-------------------------
+в главном компоненте
+ Task(
+      v-for="(task , index) in $store.getters.getTasks" 
+      :key="index"
+      :task="task"
+    )
+
+  mounted() {
+   this.$store.dispatch("newTask", task)
+  },
+
+----------------------------------taskModule.js
  state: {
     tasks: [],
   },
-
- this.$store.dispatch("newTask", task)
-  computed: {
-    tasks() {
-      return this.$store.getters.tasks;
-    },
-  },
------------
+ 
+ ------------------
  mutations: {
     newTask(state, payload){
-      state.tasks.push(payload);
+       state.photos = payload;
     }
   },
   actions: {
-    // объект  который принимает свойство commit и второй параметр сам task
-    newTask({ commit }, payload) {
-      commit("newTask", payload);
-    },
+     async newTask(ctx) {
+      const res = await fetch(
+        "https://jsonplaceholder.typicode.com/photos?_limit=10"
+      );
+      const tasks = await res.json();
+      ctx.commit("newTask", tasks);
   },
   getters: {
-    tasks(state) {
+    getTasks(state) {
       return state.tasks;
     },
   },
