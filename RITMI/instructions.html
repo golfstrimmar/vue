@@ -1,0 +1,155 @@
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==SASS======SASS======SASS======SASS======SASS======SASS======SASS======SASS======SASS======SASS======SASS======SASS======SASS====
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+.hoverable {.special & {}}======= класс меняет свойтва в зависимости от родителя (не работает)
+
+%prominent
+@extend %prominent;  --добавляет свойства без доьавления класса prominent
+
+@extend .prominent; ---добавит все свойства класса .prominent  все-таки потянется в конечный файл css 
+color: lighten($color_success, 50%)
+
+.hoverable {  &.special  {}}  === .hoverable  .special
+
+$color_success: cyan
+color: lighten($color_success, 50%)
+
+@mixin box-shadow
+  box-shadow: 0px 5px 14px 4px rgba(0, 0, 0, 0.5)
+  
+@include box-shadow
+
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==VUEX====VUEX====VUEX====VUEX====VUEX====VUEX====VUEX====VUEX====VUEX====VUEX====VUEX====VUEX==
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+на странице cards сделана передача данных между компонентами одного уровня через vuex
+
+1. eсть папка store
+  в ней store.js
+
+2. регистрируем его в main.js
+import store from "@/store/store";
+new Vue({
+  vuetify,
+  router,
+  store,     <-----
+  render: (h) => h(App),
+}).$mount("#app");
+
+
+3. регистрация в этом файле vuex
+import Vue from "vue";
+import Vuex from "vuex";
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+ <!-- это хранилище -->
+  state: {
+    <!-- в нем текущий массив -->
+    cards: [
+      {
+        title: "first",
+        id: 1,
+        description: "описание 1",
+        completed: false,
+      },
+      {
+        title: "second",
+        id: 2,
+        description: "описание 2",
+        completed: false,
+      },
+    ],
+  },
+
+  mutations: {},
+
+  actions: {},
+
+  <!-- берем из хранилища массив. 
+    этот getter можно использовать теперь в любом месте приложения  -->
+  getters: {
+    cards(state) {
+      return state.cards;
+    },
+  },
+});
+
+
+4. идем например в другой файл и dspadftv этот getter
+
+computed: {
+cards(){
+  return this.$store.getters.cards
+}
+  },
+
+5. дальше можно работать с этим массивом как обычно например вывести вот так
+v-card.pa-5.my-4(elevation='8' 
+       v-for="( card, index)  in cards"  :key="index"
+       )
+  h3.mt-3 {{card.title}}
+  v-card-text() {{card.description}}
+
+=======================
+теперь хочу добавить элемент массива по данным которые снимаю с инпутов на странице home
+
+1.на странице home с инпутами добавляю
+ methods: {
+    NewCard() {
+      if (this.cardTitle === "") {
+        return;
+      }
+       const card = {
+        title: this.cardTitle,
+        description: this.cardDescription,
+        completed: false,
+      };
+      this.$store.dispatch('NewCard',card)
+      console.log(card);
+      this.cardTitle = "";
+      this.cardDescription = "";
+    },
+  },
+
+2. по кнопке событию клика вызываю этот метод
+ v-btn.pa-4( dark='' color='indigo' 
+        @click="NewCard()"
+        )
+
+3.на store.js  
+  mutations: {
+    <!-- // payload это карточка -->
+    NewCard(state, payload) {
+      state.cards.push(payload);
+      payload.id = Math.random();
+    },
+  },
+
+  actions: {
+    NewCard({ commit }, payload) {
+    commit("NewCard", payload);
+    },
+  },
+
+========= дополнительно делаю закрытие по клику на крестик
+а именно по клику меняется параметр у элемента массива, а показывается элемент массива если параметр другой.
+  v-card.pa-5.my-4(elevation='8' 
+       v-for="( card, index)  in cards"  :key="index"
+       v-if="!card.completed"
+       )
+        v-icon.float-right(
+          @click="usedCard(card)"
+          ) mdi-close
+
+methods: {
+  usedCard(card){
+  return card.completed = true
+ }
+  },
+
+============== 11.12.2020 я сделал это!))
