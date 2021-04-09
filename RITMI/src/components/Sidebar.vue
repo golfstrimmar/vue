@@ -17,7 +17,6 @@ ul.sidenav.app-sidenav(:class="{open: value= value}")
 export default {
   props: ['value'],
    data: () => ({
-      
          pagesBattons: [
       {
         title: "Главная",
@@ -29,8 +28,12 @@ export default {
         route: "/Timetable",
       },
       {
-        title: "Форма регистрации",
+        title: "Регистрация",
         route: "/Registration",
+      },
+      {
+        title: "Регистрация e-mail",
+        route: "/SignUp",
       },
       {
         title: "Кто уже с нами",

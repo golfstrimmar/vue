@@ -10,6 +10,7 @@
     "@mdi/font": "^5.9.55",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "firebase": "^8.3.2",
     "materialize-css": "^1.0.0-rc.2",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",

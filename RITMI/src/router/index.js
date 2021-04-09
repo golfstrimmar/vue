@@ -5,6 +5,7 @@ import Registration from "../views/Registration.vue";
 import Categories from "../views/Categories.vue";
 import Timetable from "../views/Timetable.vue";
 import Contacts from "../views/Contacts.vue";
+import SignUp from "../views/SignUp.vue";
 
 Vue.use(VueRouter)
 
@@ -20,6 +21,12 @@ const routes = [
         name: "Registration",
         meta: { layout: "reg" },
         component: () => import("../views/Registration.vue")
+    },
+    {
+        path: "/SignUp",
+        name: "SignUp",
+        meta: { layout: "reg" },
+        component: () => import("../views/SignUp.vue")
     },
     {
         path: "/Categories",

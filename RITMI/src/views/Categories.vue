@@ -2,33 +2,33 @@
 div
     .title-2
       h2 Кликните по вкладке с интересующей вас категорией
+
     .akr
       .akr__wrapper
         ul.akr__body
-          S_baby_3_5_debut_solo(
-              :options='options'
-              @select="OptionSelect"
-              :selected1='selected1'
+          baby_3_5_debut_solo(
+            )
+          baby_3_5_debut_duety(
             )
 
-          //- li.akr__item.akr-item
-          //-   .akr-item__title.akr-title-js
-          //-     | Бэби 3-5 лет дебют дуэты (w,ch)
-          //-     i.icon-chevron-down.akr-item__img.akr-item-img-js
-          //-   .akr__drop.akr-drop.akr-drop-js
-          //-     .list
-          //-       .list__header
-          //-         .list__item Партнер
-          //-         .list__item Партнерша
-          //-         .list__item Клуб
-          //-         .list__item Фамилия тренера
-          //-         .list__item Город
-          //-     .akr-item__line.line
-          //-       span Пупкин Трофим
-          //-       span  Дуракова Анфиса
-          //-       span  Веселые человечки
-          //-       span  Марк Жопов
-          //-       span  Кислозадрыщенск
+    //-       li.akr__item.akr-item
+    //-         .akr-item__title.akr-title-js
+    //-           | Бэби 3-5 лет дебют дуэты (w,ch)
+    //-           i.icon-chevron-down.akr-item__img.akr-item-img-js
+    //-         .akr__drop.akr-drop.akr-drop-js
+    //-           .list
+    //-             .list__header
+    //-               .list__item Партнер
+    //-               .list__item Партнерша
+    //-               .list__item Клуб
+    //-               .list__item Фамилия тренера
+    //-               .list__item Город
+    //-           .akr-item__line.line
+    //-             span Пупкин Трофим
+    //-             span  Дуракова Анфиса
+    //-             span  Веселые человечки
+    //-             span  Марк Жопов
+    //-             span  Кислозадрыщенск
           //- li.akr__item.akr-item
           //-   .akr-item__title.akr-title-js
           //-     | Бэби 3-5 лет школа соло (w,ch,j)
@@ -759,41 +759,25 @@ div
 </template>
   
 <script>
-
-import S_baby_3_5_debut_solo from '@/components/s-baby-3-5-debut-solo'
-
-
+import baby_3_5_debut_solo from '@/components/baby-3-5-debut-solo'
+import baby_3_5_debut_duety from '@/components/baby-3-5-debut-duety'
 export default {
+
   data(){
     return{
-    options: [
-        {
-          title: 'какой-то танцор1',
-          subtitle: 'какой-то танцор1/1',
-          club: 'какой-то клуб',
-          coach: 'какой-то тренер',
-          town: 'какой-то город'
-        },
-        {
-          title: 'какой-то танцор2',
-          subtitle: 'какой-то танцор2/1',
-          club: 'какой-то клуб',
-          coach: 'какой-то тренер',
-          town: 'какой-то город'
-        },
-       
-    ],
-    selected1: 'Бэби 3-5 лет дебют соло (w,ch)'
+    selected: 'Бэби 3-5 лет дебют соло (w,ch)',
+    selected1: 'Бэби 3-5 лет дебют дуеты (w,ch)'
   }
   },
       mounted(){
       },
       components:  {
-        S_baby_3_5_debut_solo
+        baby_3_5_debut_solo,
+        baby_3_5_debut_duety
       },
       methods: {
         OptionSelect(option){
-this.selected= option.title
+            this.selected= option.title
         }
       }
     }
