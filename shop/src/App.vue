@@ -1,23 +1,15 @@
 <template lang="pug">
-<!-- здесь  vuetify router vuex axios  -->
 
 #app
-  Navbar
-  router-view
-  Footer
-
+  VMainWrapper
 </template>
 
 <script>
-import Navbar from './components/navbar';
-import Footer from './components/footer';
-
+import VMainWrapper from '@/views/v-main-wrapper'
 export default {
   name: 'App',
-
   components: {
-    Navbar,
-    Footer
+VMainWrapper,
   },
 
   data: () => ({

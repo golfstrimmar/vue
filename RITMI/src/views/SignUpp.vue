@@ -10,11 +10,11 @@ div
               input#email.validate(type='email'    v-model.trim="user.email"   autocomplete="off"  )
               label(for='email') Email
           
-            .alert-warning(
-              v-if=" $v.user.email.$dirty && !$v.user.email.required "
-              ) 
-              span.mdi.mdi-alert-octagram-outline
-              span  Ошибка! Это обязательное поле.
+            //- .alert-warning(
+            //-   v-if=" $v.user.email.$dirty && !$v.user.email.required "
+            //-   ) 
+            //-   span.mdi.mdi-alert-octagram-outline
+            //-   span  Ошибка! Это обязательное поле.
             //- .alert-warning(
             //-   v-if=" $v.form.username_1.$dirty && !$v.form.username_1.minLength && submit===false"
             //-   ) 
@@ -37,11 +37,9 @@ div
   
 <script>
 
-import { validationMixin } from 'vuelidate'
-import { required, minLength, between } from 'vuelidate/lib/validators'
 
 export default {
-  name: "signUp",
+  name: "signUpp",
   data: () => ({
     user: {
       email: "",
@@ -58,19 +56,8 @@ export default {
   mounted() {},
   methods: {
     registerUser() {
-      if (
-        this.user.password !== this.user.confirmPassword ||
-        this.user.password.length < 6
-      ) {
-        this.error = true;
-      } else {
+   
        
-                this.$v.user.$touch()
-                if (this.$v.user.$dirty && this.$v.user.$invalid) {
-                     return
-                  }else{
-                          console.log(user);
-                  }
        
        const user = {
           email: this.user.email,
@@ -85,26 +72,9 @@ export default {
         this.$router.push("/Registration");
       }
     },
-  },
+  }
 
 
-
-validations: {
-user: {
-   email:{  required,
-              minLength: minLength(3)
-              },
-
-    password: {  required,
-              minLength: minLength(3)},
-
-    confirmPassword: {  required,
-              minLength: minLength(3)},
-}
-},
-
-
-};
 </script>
 
 <style lang="sass">

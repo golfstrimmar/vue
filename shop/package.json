@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "json": "json-server --watch db.json"
   },
   "dependencies": {
     "@mdi/font": "^5.9.55",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
     "firebase": "^8.3.2",
+    "json-server": "^0.16.3",
     "materialize-css": "^1.0.0-rc.2",
     "pug": "^3.0.0",
     "pug-plain-loader": "^1.0.0",
@@ -20,6 +22,7 @@
     "vue-select": "^3.11.2",
     "vue-slide-up-down": "^2.0.1",
     "vuelidate": "^0.7.6",
+    "vuetify": "^2.4.8",
     "vuex": "^3.6.0"
   },
   "devDependencies": {

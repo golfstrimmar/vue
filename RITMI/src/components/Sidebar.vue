@@ -33,7 +33,7 @@ export default {
       },
       {
         title: "Регистрация e-mail",
-        route: "/SignUp",
+        route: "/SignUpp",
       },
       {
         title: "Кто уже с нами",
@@ -44,7 +44,13 @@ export default {
         route: "/Contacts",
       },
     ],
-    }),  components: {    },  mounted() {     },  methods: {      },  computed:{      }
+    }),  components: {    },  mounted() {     },
+      methods: { 
+         async logout(){
+          await  this.$store.dispatch('logout')
+          }
+
+         },  computed:{      }
     }
 </script>
   
